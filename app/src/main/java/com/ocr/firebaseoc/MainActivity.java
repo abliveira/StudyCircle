@@ -48,8 +48,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                         .createSignInIntentBuilder()
                         .setTheme(R.style.LoginTheme)
                         .setAvailableProviders(providers)
-                        .setIsSmartLockEnabled(false, true)
-                        .setLogo(R.drawable.ic_logo_auth)
+                        .setIsSmartLockEnabled(false, false)
+                        .setLogo(R.drawable.ic_logo_auth) // TODO Change logo
+                        .setLockOrientation(true)
                         .build(),
                 RC_SIGN_IN);
     }
