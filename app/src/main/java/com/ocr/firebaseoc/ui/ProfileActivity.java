@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -29,10 +30,35 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
         updateUIWithUserData();
     }
 
+    /* These methods use the Singleton object  AuthUI.getInstance() from the FirebaseUI library.
+    The latter has several methods, including  signOut() and  delete(), which both return an object
+    of type Task, which allows these calls to be made asynchronously.
+
+    These Tasks have several Callback methods to check if and when they end correctly. */
     private void setupListeners(){
-        binding.updateButton.setOnClickListener(view -> { });
-        binding.signOutButton.setOnClickListener(view -> { });
-        binding.deleteButton.setOnClickListener(view -> { });
+        // Sign out button
+        binding.signOutButton.setOnClickListener(view -> {
+            userManager.signOut(this).addOnSuccessListener(aVoid -> {
+                finish();
+            });
+        });
+
+        // Delete button
+        binding.deleteButton.setOnClickListener(view -> {
+
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.popup_message_confirmation_delete_account)
+                    .setPositiveButton(R.string.popup_message_choice_yes, (dialogInterface, i) ->
+                            userManager.deleteUser(ProfileActivity.this)
+                                    .addOnSuccessListener(aVoid -> {
+                                                finish();
+                                            }
+                                    )
+                    )
+                    .setNegativeButton(R.string.popup_message_choice_no, null)
+                    .show();
+
+        });
     }
 
     private void updateUIWithUserData(){
