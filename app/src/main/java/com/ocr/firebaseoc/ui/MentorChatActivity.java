@@ -132,10 +132,19 @@ public class MentorChatActivity extends BaseActivity<ActivityMentorChatBinding> 
         boolean canSendMessage = !TextUtils.isEmpty(binding.chatEditText.getText()) && userManager.isCurrentUserLogged();
 
         if (canSendMessage){
-            // Create a new message for the chat
-            chatManager.createMessageForChat(binding.chatEditText.getText().toString(), this.currentChatName);
+            String messageText = binding.chatEditText.getText().toString();
+            // Check if there is an image to add with the message
+            if(binding.imagePreview.getDrawable() == null){
+                // Create a new message for the chat
+                chatManager.createMessageForChat(messageText, this.currentChatName);
+            }else {
+                // Create a new message with an image for the chat
+                chatManager.sendMessageWithImageForChat(messageText, this.uriImageSelected, this.currentChatName);
+                binding.imagePreview.setImageDrawable(null);
+            }
             // Reset text field
             binding.chatEditText.setText("");
+
         }
     }
 

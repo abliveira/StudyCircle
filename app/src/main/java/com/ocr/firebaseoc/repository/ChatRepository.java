@@ -20,11 +20,18 @@ the result of the query using comparison operators likewhereEqualTo()
 ,whereLessThan()  ,orderBy() , or   limit()  .
  */
 
+import android.net.Uri;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.ocr.firebaseoc.manager.UserManager;
 import com.ocr.firebaseoc.model.Message;
+
+import java.util.UUID;
 
 public final class ChatRepository {
 
@@ -60,6 +67,26 @@ public final class ChatRepository {
                 .collection(MESSAGE_COLLECTION)
                 .orderBy("dateCreated")
                 .limit(50);
+    }
+
+    public void createMessageWithImageForChat(String urlImage, String textMessage, String chat){
+        userManager.getUserData().addOnSuccessListener(user -> {
+            // Creating Message with the URL image
+            Message message = new Message(textMessage, urlImage, user);
+
+            // Storing Message on Firestore
+            this.getChatCollection()
+                    .document(chat)
+                    .collection(MESSAGE_COLLECTION)
+                    .add(message);
+
+        });
+    }
+
+    public UploadTask uploadImage(Uri imageUri, String chat){
+        String uuid = UUID.randomUUID().toString(); // GENERATE UNIQUE STRING
+        StorageReference mImageRef = FirebaseStorage.getInstance().getReference(chat + "/" + uuid);
+        return mImageRef.putFile(imageUri);
     }
 
     public void createMessageForChat(String textMessage, String chat){
