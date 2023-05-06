@@ -88,6 +88,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 startSignInActivity();
             }
         });
+        // Chat Button
+        binding.chatButton.setOnClickListener(view -> {
+            if(userManager.isCurrentUserLogged()){
+                startMentorChatActivity();
+            }else{
+                showSnackBar(getString(R.string.error_not_connected));
+            }
+        });
     }
 
     // Launching Profile Activity
@@ -118,4 +126,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                         .build(),
                 RC_SIGN_IN);
     }
+
+    // Launch Mentor Chat Activity
+    private void startMentorChatActivity(){
+        Intent intent = new Intent(this, MentorChatActivity.class);
+        startActivity(intent);
+    }
+
 }
