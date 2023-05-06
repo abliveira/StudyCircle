@@ -29,6 +29,10 @@ public class ChatManager {
         }
     }
 
+    public void createMessageForChat(String message, String chat){
+        chatRepository.createMessageForChat(message, chat);
+    }
+
     public Query getAllMessageForChat(String chat){
         return chatRepository.getAllMessageForChat(chat);
     }

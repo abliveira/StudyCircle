@@ -23,14 +23,19 @@ the result of the query using comparison operators likewhereEqualTo()
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.ocr.firebaseoc.manager.UserManager;
+import com.ocr.firebaseoc.model.Message;
 
 public final class ChatRepository {
 
+    private UserManager userManager;
     private static final String CHAT_COLLECTION = "chats";
     private static final String MESSAGE_COLLECTION = "messages";
     private static volatile ChatRepository instance;
 
-    private ChatRepository() { }
+    private ChatRepository() {
+        this.userManager = UserManager.getInstance();
+    }
 
     public static ChatRepository getInstance() {
         ChatRepository result = instance;
@@ -55,5 +60,19 @@ public final class ChatRepository {
                 .collection(MESSAGE_COLLECTION)
                 .orderBy("dateCreated")
                 .limit(50);
+    }
+
+    public void createMessageForChat(String textMessage, String chat){
+
+        userManager.getUserData().addOnSuccessListener(user -> {
+            // Create the Message object
+            Message message = new Message(textMessage, user);
+
+            // Store Message to Firestore
+            this.getChatCollection()
+                    .document(chat)
+                    .collection(MESSAGE_COLLECTION)
+                    .add(message);
+        });
     }
 }

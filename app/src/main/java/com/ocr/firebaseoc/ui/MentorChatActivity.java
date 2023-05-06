@@ -1,6 +1,7 @@
 package com.ocr.firebaseoc.ui;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -42,6 +43,9 @@ public class MentorChatActivity extends BaseActivity<ActivityMentorChatBinding> 
 
     private void setupListeners(){
 
+        // Send button
+        binding.sendButton.setOnClickListener(view -> { sendMessage(); });
+
         // Chat buttons
         binding.androidChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_ANDROID); });
         binding.firebaseChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_FIREBASE); });
@@ -66,6 +70,18 @@ public class MentorChatActivity extends BaseActivity<ActivityMentorChatBinding> 
 
         binding.chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.chatRecyclerView.setAdapter(this.mentorChatAdapter);
+    }
+
+    private void sendMessage(){
+        // Check if user can send a message (Text not null + user logged)
+        boolean canSendMessage = !TextUtils.isEmpty(binding.chatEditText.getText()) && userManager.isCurrentUserLogged();
+
+        if (canSendMessage){
+            // Create a new message for the chat
+            chatManager.createMessageForChat(binding.chatEditText.getText().toString(), this.currentChatName);
+            // Reset text field
+            binding.chatEditText.setText("");
+        }
     }
 
     // Create options for RecyclerView from a Query
