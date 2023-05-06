@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.ocr.firebaseoc.ui.MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle"> <!-- DISABLE TOOLBAR IN MAIN ACTIVITY-->
             <intent-filter>
@@ -22,14 +22,13 @@
         <!-- PROFILE ACTIVITY -->
         <activity
             android:name=".ui.ProfileActivity"
-            android:screenOrientation="portrait"
             android:label="@string/toolbar_title_login_activity"
             android:parentActivityName=".ui.MainActivity"/>
         <!-- MENTOR CHAT ACTIVITY -->
         <activity
             android:name=".ui.MentorChatActivity"
             android:label="@string/toolbar_title_mentor_chat_activity"
-            android:parentActivityName="ui.MainActivity"/>
+            android:parentActivityName=".ui.MainActivity"/>
 
     </application>
 
