@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupListeners();
-        throw new RuntimeException("Test Crash"); // Keep commented. Generates a test crash
+//        throw new RuntimeException("Test Crash"); // Keep commented. Generates a test crash
     }
 
     @Override
