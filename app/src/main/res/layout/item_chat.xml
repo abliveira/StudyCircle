@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_mentor_chat_item_root_view"
+    android:id="@+id/activity_chat_item_root_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/default_margin">
@@ -26,9 +26,9 @@
             android:layout_height="50dp"
             app:srcCompat="@drawable/ic_anon_user_48dp"/>
 
-        <!-- IMAGE IS MENTOR -->
+        <!-- IMAGE USER TYPE -->
         <ImageView
-            android:id="@+id/profileIsMentor"
+            android:id="@+id/profileUserType"
             android:layout_width="15dp"
             android:layout_height="15dp"
             app:srcCompat="@drawable/ic_school_black_24dp"/>

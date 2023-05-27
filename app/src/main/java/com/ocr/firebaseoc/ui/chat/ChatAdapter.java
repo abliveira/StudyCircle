@@ -30,7 +30,7 @@ It's important that you know that Firebase's SDK allows you to create Listeners 
  real-time in your Android app.
  */
 
-public class MentorChatAdapter extends FirestoreRecyclerAdapter<Message, MessageViewHolder> {
+public class ChatAdapter extends FirestoreRecyclerAdapter<Message, MessageViewHolder> {
 
     public interface Listener {
         void onDataChanged();
@@ -44,7 +44,7 @@ public class MentorChatAdapter extends FirestoreRecyclerAdapter<Message, Message
 
     private Listener callback;
 
-    public MentorChatAdapter(@NonNull FirestoreRecyclerOptions<Message> options, RequestManager glide, Listener callback) {
+    public ChatAdapter(@NonNull FirestoreRecyclerOptions<Message> options, RequestManager glide, Listener callback) {
         super(options);
         this.glide = glide;
         this.callback = callback;

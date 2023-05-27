@@ -31,20 +31,19 @@ public class ChatManager {
         }
     }
 
-    public void createMessageForChat(String message, String chat){
-        chatRepository.createMessageForChat(message, chat);
+    public Query getChatMessages(String chat){
+        return chatRepository.getChatMessages(chat);
     }
 
-    public void sendMessageWithImageForChat(String message, Uri imageUri, String chat){
+    public void createMessage(String message, String chat){
+        chatRepository.createMessage(message, chat);
+    }
+
+    public void sendMessageWithImage(String message, Uri imageUri, String chat){
         chatRepository.uploadImage(imageUri, chat).addOnSuccessListener(taskSnapshot -> {
             taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
-                chatRepository.createMessageWithImageForChat(uri.toString(), message, chat);
+                chatRepository.createMessageWithImage(uri.toString(), message, chat);
             });
         });
     }
-
-    public Query getAllMessageForChat(String chat){
-        return chatRepository.getAllMessageForChat(chat);
-    }
-
 }

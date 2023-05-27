@@ -27,10 +27,10 @@
             android:name=".ui.ProfileActivity"
             android:label="@string/toolbar_title_login_activity"
             android:parentActivityName=".ui.MainActivity"/>
-        <!-- MENTOR CHAT ACTIVITY -->
+        <!-- CHAT ACTIVITY -->
         <activity
-            android:name=".ui.MentorChatActivity"
-            android:label="@string/toolbar_title_mentor_chat_activity"
+            android:name=".ui.ChatActivity"
+            android:label="@string/toolbar_title_chat_activity"
             android:parentActivityName=".ui.MainActivity"/>
         <!-- NOTIFICATION SERVICE -->
         <service

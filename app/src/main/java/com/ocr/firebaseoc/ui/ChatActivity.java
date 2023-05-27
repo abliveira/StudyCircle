@@ -19,18 +19,18 @@ import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 import com.ocr.firebaseoc.R;
-import com.ocr.firebaseoc.databinding.ActivityMentorChatBinding;
+import com.ocr.firebaseoc.databinding.ActivityChatBinding;
 import com.ocr.firebaseoc.manager.ChatManager;
 import com.ocr.firebaseoc.manager.UserManager;
 import com.ocr.firebaseoc.model.Message;
-import com.ocr.firebaseoc.ui.chat.MentorChatAdapter;
+import com.ocr.firebaseoc.ui.chat.ChatAdapter;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class MentorChatActivity extends BaseActivity<ActivityMentorChatBinding> implements MentorChatAdapter.Listener {
+public class ChatActivity extends BaseActivity<ActivityChatBinding> implements ChatAdapter.Listener {
 
-    private MentorChatAdapter mentorChatAdapter;
+    private ChatAdapter chatAdapter;
     private String currentChatName;
 
     private static final String PERMS = Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -47,8 +47,8 @@ public class MentorChatActivity extends BaseActivity<ActivityMentorChatBinding> 
     private Uri uriImageSelected;
 
     @Override
-    protected ActivityMentorChatBinding getViewBinding() {
-        return ActivityMentorChatBinding.inflate(getLayoutInflater());
+    protected ActivityChatBinding getViewBinding() {
+        return ActivityChatBinding.inflate(getLayoutInflater());
     }
 
     @Override
@@ -112,19 +112,19 @@ public class MentorChatActivity extends BaseActivity<ActivityMentorChatBinding> 
         //Track current chat name
         this.currentChatName = chatName;
         //Configure Adapter & RecyclerView
-        this.mentorChatAdapter = new MentorChatAdapter(
-                generateOptionsForAdapter(chatManager.getAllMessageForChat(this.currentChatName)),
+        this.chatAdapter = new ChatAdapter(
+                generateOptionsForAdapter(chatManager.getChatMessages(this.currentChatName)),
                 Glide.with(this), this);
 
-        mentorChatAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+        chatAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {
-                binding.chatRecyclerView.smoothScrollToPosition(mentorChatAdapter.getItemCount()); // Scroll to bottom on new messages
+                binding.chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()); // Scroll to bottom on new messages
             }
         });
 
         binding.chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.chatRecyclerView.setAdapter(this.mentorChatAdapter);
+        binding.chatRecyclerView.setAdapter(this.chatAdapter);
     }
 
     private void sendMessage(){
@@ -136,10 +136,10 @@ public class MentorChatActivity extends BaseActivity<ActivityMentorChatBinding> 
             // Check if there is an image to add with the message
             if(binding.imagePreview.getDrawable() == null){
                 // Create a new message for the chat
-                chatManager.createMessageForChat(messageText, this.currentChatName);
+                chatManager.createMessage(messageText, this.currentChatName);
             }else {
                 // Create a new message with an image for the chat
-                chatManager.sendMessageWithImageForChat(messageText, this.uriImageSelected, this.currentChatName);
+                chatManager.sendMessageWithImage(messageText, this.uriImageSelected, this.currentChatName);
                 binding.imagePreview.setImageDrawable(null);
             }
             // Reset text field
@@ -159,6 +159,6 @@ public class MentorChatActivity extends BaseActivity<ActivityMentorChatBinding> 
     @Override
     public void onDataChanged() {
         // Show TextView in case RecyclerView is empty
-        binding.emptyRecyclerView.setVisibility(this.mentorChatAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+        binding.emptyRecyclerView.setVisibility(this.chatAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
     }
 }

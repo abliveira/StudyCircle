@@ -61,7 +61,7 @@ public final class ChatRepository {
         return FirebaseFirestore.getInstance().collection(CHAT_COLLECTION);
     }
 
-    public Query getAllMessageForChat(String chat){
+    public Query getChatMessages(String chat){
         return this.getChatCollection()
                 .document(chat)
                 .collection(MESSAGE_COLLECTION)
@@ -69,7 +69,21 @@ public final class ChatRepository {
                 .limit(50);
     }
 
-    public void createMessageWithImageForChat(String urlImage, String textMessage, String chat){
+    public void createMessage(String textMessage, String chat){
+
+        userManager.getUserData().addOnSuccessListener(user -> {
+            // Create the Message object
+            Message message = new Message(textMessage, user);
+
+            // Store Message to Firestore
+            this.getChatCollection()
+                    .document(chat)
+                    .collection(MESSAGE_COLLECTION)
+                    .add(message);
+        });
+    }
+
+    public void createMessageWithImage(String urlImage, String textMessage, String chat){
         userManager.getUserData().addOnSuccessListener(user -> {
             // Creating Message with the URL image
             Message message = new Message(textMessage, urlImage, user);
@@ -87,19 +101,5 @@ public final class ChatRepository {
         String uuid = UUID.randomUUID().toString(); // GENERATE UNIQUE STRING
         StorageReference mImageRef = FirebaseStorage.getInstance().getReference(chat + "/" + uuid);
         return mImageRef.putFile(imageUri);
-    }
-
-    public void createMessageForChat(String textMessage, String chat){
-
-        userManager.getUserData().addOnSuccessListener(user -> {
-            // Create the Message object
-            Message message = new Message(textMessage, user);
-
-            // Store Message to Firestore
-            this.getChatCollection()
-                    .document(chat)
-                    .collection(MESSAGE_COLLECTION)
-                    .add(message);
-        });
     }
 }

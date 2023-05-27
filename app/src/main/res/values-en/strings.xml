@@ -28,13 +28,13 @@
     <string name="popup_message_confirmation_delete_account">Are you sure you want to delete your account?</string>
     <string name="popup_message_choice_yes">Yes</string>
     <string name="popup_message_choice_no">No</string>
-    <string name="check_box_is_mentor">Are you a mentor?</string>
+    <string name="check_box_user_type">Are you a mentor?</string>
 
     <!-- MENTOR_CHAT ACTIVITY -->
-    <string name="toolbar_title_mentor_chat_activity">Chat Rooms</string>
-    <string name="text_input_title_mentor_chat_activity">Write your message</string>
-    <string name="button_title_mentor_chat_activity">SEND</string>
-    <string name="text_view_mentor_chat_error">This thread has no messages</string>
+    <string name="toolbar_title_chat_activity">Chat Rooms</string>
+    <string name="text_input_title_chat_activity">Write your message</string>
+    <string name="button_title_chat_activity">SEND</string>
+    <string name="text_view_chat_error">This thread has no messages</string>
     <string name="popup_title_permission_files_access">To attach a photo, Firebase OC requires additional permissions.</string>
     <string name="toast_title_no_image_chosen">No image chosen</string>
 </resources>

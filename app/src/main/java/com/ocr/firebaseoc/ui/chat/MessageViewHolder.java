@@ -42,7 +42,7 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         this.isSender = isSender;
         binding = ItemChatBinding.bind(itemView);
 
-        // Setup default colros
+        // Setup default colors
         colorCurrentUser = ContextCompat.getColor(itemView.getContext(), R.color.colorAccent);
         colorRemoteUser = ContextCompat.getColor(itemView.getContext(), R.color.colorPrimary);
     }
@@ -56,8 +56,8 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         // Update date
         if (message.getDateCreated() != null) binding.dateTextView.setText(this.convertDateToHour(message.getDateCreated()));
 
-        // Update isMentor
-        binding.profileIsMentor.setVisibility(message.getUserSender().getIsMentor() ? View.VISIBLE : View.INVISIBLE);
+        // Update userType
+        binding.profileUserType.setVisibility(message.getUserSender().getUserType() ? View.VISIBLE : View.INVISIBLE);
 
         // Update profile picture
         if (message.getUserSender().getUrlPicture() != null)

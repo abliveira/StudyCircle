@@ -65,8 +65,8 @@ public class UserManager {
         return userRepository.updateUsername(username);
     }
 
-    public void updateIsMentor(Boolean isMentor){
-        userRepository.updateIsMentor(isMentor);
+    public void updateUserType(Boolean userType){
+        userRepository.updateUserType(userType);
     }
 
     public Task<Void> deleteUser(Context context){

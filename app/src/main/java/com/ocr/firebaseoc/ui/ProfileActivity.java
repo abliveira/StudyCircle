@@ -38,9 +38,9 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
     These Tasks have several Callback methods to check if and when they end correctly. */
     private void setupListeners(){
 
-        // Mentor Checkbox
-        binding.isMentorCheckBox.setOnCheckedChangeListener((compoundButton, checked) -> {
-            userManager.updateIsMentor(checked);
+        // UserType Checkbox
+        binding.userTypeCheckBox.setOnCheckedChangeListener((compoundButton, checked) -> {
+            userManager.updateUserType(checked);
         });
 
         // Update button
@@ -93,7 +93,7 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
         userManager.getUserData().addOnSuccessListener(user -> {
             // Set the data with the user information
             String username = TextUtils.isEmpty(user.getUsername()) ? getString(R.string.info_no_username_found) : user.getUsername();
-            binding.isMentorCheckBox.setChecked(user.getIsMentor());
+            binding.userTypeCheckBox.setChecked(user.getUserType());
             binding.usernameEditText.setText(username);
         });
     }

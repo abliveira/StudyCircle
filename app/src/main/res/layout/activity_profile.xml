@@ -78,12 +78,12 @@
 
         </LinearLayout>
 
-        <!-- CHECKBOX IS USER MENTOR -->
+        <!-- CHECKBOX USER TYPE -->
         <CheckBox
-            android:id="@+id/isMentorCheckBox"
+            android:id="@+id/userTypeCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/check_box_is_mentor"/>
+            android:text="@string/check_box_user_type"/>
 
 
 

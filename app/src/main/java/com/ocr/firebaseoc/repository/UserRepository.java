@@ -25,7 +25,7 @@ public final class UserRepository {
 
     private static final String COLLECTION_NAME = "users";
     private static final String USERNAME_FIELD = "username";
-    private static final String IS_MENTOR_FIELD = "isMentor";
+    private static final String USER_TYPE_FIELD = "userType";
 
     private UserRepository() { }
 
@@ -70,15 +70,16 @@ public final class UserRepository {
             User userToCreate = new User(uid, username, urlPicture);
 
             Task<DocumentSnapshot> userData = getUserData();
-            // If the user already exist in Firestore, we get his data (isMentor)
+            // If the user already exist in Firestore, we get his data (userType)
             userData.addOnSuccessListener(documentSnapshot -> {
-                if (documentSnapshot.contains(IS_MENTOR_FIELD)){
-                    userToCreate.setIsMentor((Boolean) documentSnapshot.get(IS_MENTOR_FIELD));
+                if (documentSnapshot.contains(USER_TYPE_FIELD)){
+                    userToCreate.setUserType((Boolean) documentSnapshot.get(USER_TYPE_FIELD));
                 }
                 this.getUsersCollection().document(uid).set(userToCreate);
             });
         }
     }
+
 
     // Get User Data from Firestore
     public Task<DocumentSnapshot> getUserData(){
@@ -100,11 +101,11 @@ public final class UserRepository {
         }
     }
 
-    // Update User isMentor
-    public void updateIsMentor(Boolean isMentor) {
+    // Update UserType
+    public void updateUserType(Boolean userType) {
         String uid = this.getCurrentUserUID();
         if(uid != null){
-            this.getUsersCollection().document(uid).update(IS_MENTOR_FIELD, isMentor);
+            this.getUsersCollection().document(uid).update(USER_TYPE_FIELD, userType);
         }
     }
 

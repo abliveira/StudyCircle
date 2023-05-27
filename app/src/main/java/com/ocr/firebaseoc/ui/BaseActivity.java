@@ -30,5 +30,4 @@ abstract class BaseActivity<T extends ViewBinding> extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
     }
-
 }

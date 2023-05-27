@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         // Chat Button
         binding.chatButton.setOnClickListener(view -> {
             if(userManager.isCurrentUserLogged()){
-                startMentorChatActivity();
+                startChatActivity();
             }else{
                 showSnackBar(getString(R.string.error_not_connected));
             }
@@ -112,7 +112,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
-                //new AuthUI.IdpConfig.GoogleBuilder().build(),
+                new AuthUI.IdpConfig.GoogleBuilder().build(),
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
         // Launch the activity
@@ -128,9 +128,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 RC_SIGN_IN);
     }
 
-    // Launch Mentor Chat Activity
-    private void startMentorChatActivity(){
-        Intent intent = new Intent(this, MentorChatActivity.class);
+    // Launch Chat Activity
+    private void startChatActivity(){
+        Intent intent = new Intent(this, ChatActivity.class);
         startActivity(intent);
     }
 
