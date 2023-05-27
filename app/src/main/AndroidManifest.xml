@@ -25,11 +25,13 @@
         <!-- PROFILE ACTIVITY -->
         <activity
             android:name="com.abliveira.studycircle.ui.ProfileActivity"
+            android:screenOrientation="portrait"
             android:label="@string/toolbar_title_login_activity"
             android:parentActivityName="com.abliveira.studycircle.ui.MainActivity"/>
         <!-- CHAT ACTIVITY -->
         <activity
             android:name="com.abliveira.studycircle.ui.ChatActivity"
+            android:screenOrientation="portrait"
             android:label="@string/toolbar_title_chat_activity"
             android:parentActivityName="com.abliveira.studycircle.ui.MainActivity"/>
         <!-- NOTIFICATION SERVICE -->
@@ -39,6 +41,9 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
     </application>
 
