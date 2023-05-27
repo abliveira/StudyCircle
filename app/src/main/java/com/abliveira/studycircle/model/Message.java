@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.model;
+package com.abliveira.studycircle.model;
 
 import com.google.firebase.firestore.ServerTimestamp;
 

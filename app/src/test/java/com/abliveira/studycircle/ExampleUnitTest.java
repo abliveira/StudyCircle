@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc;
+package com.abliveira.studycircle;
 
 import org.junit.Test;
 

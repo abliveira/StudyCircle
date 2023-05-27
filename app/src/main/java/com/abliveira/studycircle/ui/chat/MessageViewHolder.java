@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.ui.chat;
+package com.abliveira.studycircle.ui.chat;
 
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
-import com.ocr.firebaseoc.R;
-import com.ocr.firebaseoc.databinding.ItemChatBinding;
-import com.ocr.firebaseoc.model.Message;
+import com.abliveira.studycircle.R;
+import com.abliveira.studycircle.databinding.ItemChatBinding;
+import com.abliveira.studycircle.model.Message;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

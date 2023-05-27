@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc;
+package com.abliveira.studycircle;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.openclassrooms.firebaseoc", appContext.getPackageName());
+        assertEquals("com.abliveira.studycircle", appContext.getPackageName());
     }
 }

@@ -7,14 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- IMAGE VIEW FIREBASE OC -->
+    <!-- IMAGE VIEW STUDYCIRCLE -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_logo_auth"
         android:layout_margin="@dimen/default_large_margin"/>
 
-    <!-- TITLE FIREBASE OC -->
+    <!-- TITLE STUDYCIRCLE -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         android:textStyle="bold"
         android:layout_margin="@dimen/default_margin"/>
 
-    <!-- DESCRIPTION FIREBASE OC -->
+    <!-- DESCRIPTION STUDYCIRCLE -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

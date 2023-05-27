@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.ui;
+package com.abliveira.studycircle.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,12 +18,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
-import com.ocr.firebaseoc.R;
-import com.ocr.firebaseoc.databinding.ActivityChatBinding;
-import com.ocr.firebaseoc.manager.ChatManager;
-import com.ocr.firebaseoc.manager.UserManager;
-import com.ocr.firebaseoc.model.Message;
-import com.ocr.firebaseoc.ui.chat.ChatAdapter;
+import com.abliveira.studycircle.R;
+import com.abliveira.studycircle.databinding.ActivityChatBinding;
+import com.abliveira.studycircle.manager.ChatManager;
+import com.abliveira.studycircle.manager.UserManager;
+import com.abliveira.studycircle.model.Message;
+import com.abliveira.studycircle.ui.chat.ChatAdapter;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;

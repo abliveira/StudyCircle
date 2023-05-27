@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.notification;
+package com.abliveira.studycircle.notification;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -7,20 +7,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.ocr.firebaseoc.R;
-import com.ocr.firebaseoc.ui.MainActivity;
+import com.abliveira.studycircle.R;
+import com.abliveira.studycircle.ui.MainActivity;
 
 public class NotificationService extends FirebaseMessagingService {
 
     private final int NOTIFICATION_ID = 007;
-    private final String NOTIFICATION_TAG = "FIREBASEOC";
+    private final String NOTIFICATION_TAG = "STUDYCIRCLE";
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {

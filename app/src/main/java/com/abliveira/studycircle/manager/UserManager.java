@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.manager;
+package com.abliveira.studycircle.manager;
 
 /* Manager
         The manager will take care of processing and formatting the data, if necessary.
@@ -15,8 +15,8 @@ import android.content.Context;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
-import com.ocr.firebaseoc.model.User;
-import com.ocr.firebaseoc.repository.UserRepository;
+import com.abliveira.studycircle.model.User;
+import com.abliveira.studycircle.repository.UserRepository;
 
 public class UserManager {
 

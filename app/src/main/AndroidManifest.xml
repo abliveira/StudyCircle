@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ocr.firebaseoc">
+    package="com.abliveira.studycircle">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.abliveira.studycircle.ui.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle"> <!-- DISABLE TOOLBAR IN MAIN ACTIVITY-->
             <intent-filter>
@@ -24,17 +24,17 @@
         </activity>
         <!-- PROFILE ACTIVITY -->
         <activity
-            android:name=".ui.ProfileActivity"
+            android:name="com.abliveira.studycircle.ui.ProfileActivity"
             android:label="@string/toolbar_title_login_activity"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName="com.abliveira.studycircle.ui.MainActivity"/>
         <!-- CHAT ACTIVITY -->
         <activity
-            android:name=".ui.ChatActivity"
+            android:name="com.abliveira.studycircle.ui.ChatActivity"
             android:label="@string/toolbar_title_chat_activity"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName="com.abliveira.studycircle.ui.MainActivity"/>
         <!-- NOTIFICATION SERVICE -->
         <service
-            android:name=".notification.NotificationService">
+            android:name="com.abliveira.studycircle.notification.NotificationService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>

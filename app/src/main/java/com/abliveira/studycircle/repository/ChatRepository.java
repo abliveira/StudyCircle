@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.repository;
+package com.abliveira.studycircle.repository;
 
 /*
 In this class, we created a method ( getChatCollection() ) allowing us to
@@ -28,8 +28,8 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.ocr.firebaseoc.manager.UserManager;
-import com.ocr.firebaseoc.model.Message;
+import com.abliveira.studycircle.manager.UserManager;
+import com.abliveira.studycircle.model.Message;
 
 import java.util.UUID;
 

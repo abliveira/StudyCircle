@@ -35,6 +35,6 @@
     <string name="text_input_title_chat_activity">Write your message</string>
     <string name="button_title_chat_activity">SEND</string>
     <string name="text_view_chat_error">This thread has no messages</string>
-    <string name="popup_title_permission_files_access">To attach a photo, Firebase OC requires additional permissions.</string>
+    <string name="popup_title_permission_files_access">To attach a photo, StudyCircle requires additional permissions.</string>
     <string name="toast_title_no_image_chosen">No image chosen</string>
 </resources>

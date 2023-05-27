@@ -1,9 +1,9 @@
-package com.ocr.firebaseoc.manager;
+package com.abliveira.studycircle.manager;
 
 import android.net.Uri;
 
 import com.google.firebase.firestore.Query;
-import com.ocr.firebaseoc.repository.ChatRepository;
+import com.abliveira.studycircle.repository.ChatRepository;
 
 /*
 Nothing special in this class: we have a function getChatCollection().

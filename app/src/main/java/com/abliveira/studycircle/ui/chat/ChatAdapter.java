@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.ui.chat;
+package com.abliveira.studycircle.ui.chat;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.RequestManager;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.ocr.firebaseoc.R;
-import com.ocr.firebaseoc.manager.UserManager;
-import com.ocr.firebaseoc.model.Message;
+import com.abliveira.studycircle.R;
+import com.abliveira.studycircle.manager.UserManager;
+import com.abliveira.studycircle.model.Message;
 
 /*
 We created an adapter that looks fairly simple at first. However, it inherits

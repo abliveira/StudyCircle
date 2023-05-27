@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.ui;
+package com.abliveira.studycircle.ui;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import androidx.appcompat.app.AlertDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseUser;
-import com.ocr.firebaseoc.R;
-import com.ocr.firebaseoc.databinding.ActivityProfileBinding;
-import com.ocr.firebaseoc.manager.UserManager;
+import com.abliveira.studycircle.R;
+import com.abliveira.studycircle.databinding.ActivityProfileBinding;
+import com.abliveira.studycircle.manager.UserManager;
 
 public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
 

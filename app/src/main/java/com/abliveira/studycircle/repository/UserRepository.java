@@ -1,4 +1,4 @@
-package com.ocr.firebaseoc.repository;
+package com.abliveira.studycircle.repository;
 
 import android.content.Context;
 
@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.ocr.firebaseoc.model.User;
+import com.abliveira.studycircle.model.User;
 
 /*
 The FirebaseUI library provides us with a very   FirebaseAuth.getInstance() practical Singleton object,
