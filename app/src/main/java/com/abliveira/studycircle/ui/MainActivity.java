@@ -122,7 +122,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                         .setTheme(R.style.LoginTheme)
                         .setAvailableProviders(providers)
                         .setIsSmartLockEnabled(false, false)
-                        .setLogo(R.drawable.ic_main_logo)
+                        .setLogo(R.drawable.ic_logo_margin)
                         .setLockOrientation(true)
                         .build(),
                 RC_SIGN_IN);

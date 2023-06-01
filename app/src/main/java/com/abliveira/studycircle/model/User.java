@@ -28,5 +28,5 @@ public class User {
     public void setUsername(String username) { this.username = username; }
     public void setUid(String uid) { this.uid = uid; }
     public void setUrlPicture(String urlPicture) { this.urlPicture = urlPicture; }
-    public void setUserType(Boolean mentor) { userType = mentor; }
+    public void setUserType(Boolean userType) { this.userType = userType; }
 }
