@@ -30,7 +30,7 @@
     <string name="popup_message_choice_no">No</string>
     <string name="check_box_user_type">Are you a mentor?</string>
 
-    <!-- MENTOR_CHAT ACTIVITY -->
+    <!-- CHAT ACTIVITY -->
     <string name="toolbar_title_chat_activity">Chat Rooms</string>
     <string name="text_input_title_chat_activity">Write your message</string>
     <string name="button_title_chat_activity">SEND</string>
