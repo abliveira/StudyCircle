@@ -30,6 +30,11 @@
     <string name="popup_message_choice_no">No</string>
     <string name="check_box_user_type">Are you a mentor?</string>
 
+    <!-- RECENT CHATS ACTIVITY -->
+    <string name="tab_title_groups_recent_chats_activity">Groups</string>
+    <string name="tab_title_chats_recent_chats_activity">Chats</string>
+    <string name="tab_title_profile_recent_chats_activity">Profile</string>
+
     <!-- CHAT ACTIVITY -->
     <string name="toolbar_title_chat_activity">Chat Rooms</string>
     <string name="text_input_title_chat_activity">Write your message</string>

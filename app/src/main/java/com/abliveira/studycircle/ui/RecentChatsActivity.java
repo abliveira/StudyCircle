@@ -14,21 +14,21 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.Query;
 import com.abliveira.studycircle.R;
-import com.abliveira.studycircle.databinding.ActivityChatBinding;
+import com.abliveira.studycircle.databinding.ActivityRecentChatsBinding;
 import com.abliveira.studycircle.manager.ChatManager;
 import com.abliveira.studycircle.manager.UserManager;
 import com.abliveira.studycircle.model.Message;
 import com.abliveira.studycircle.ui.chat.ChatAdapter;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.Query;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class ChatActivity extends BaseActivity<ActivityChatBinding> implements ChatAdapter.Listener {
+public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding> implements ChatAdapter.Listener {
 
     private ChatAdapter chatAdapter;
     private String currentChatName;
@@ -47,17 +47,14 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
     private Uri uriImageSelected;
 
     @Override
-    protected ActivityChatBinding getViewBinding() {
-        return ActivityChatBinding.inflate(getLayoutInflater());
+    protected ActivityRecentChatsBinding getViewBinding() {
+        return ActivityRecentChatsBinding.inflate(getLayoutInflater());
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle b = getIntent().getExtras();
-        String chatId = b.getString("CHAT_ID");
-        setTitle(b.getString("CHAT_ID"));
-        configureRecyclerView(chatId);
+        configureRecyclerView(CHAT_NAME_ANDROID);
         setupListeners();
     }
 
@@ -70,13 +67,32 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
     private void setupListeners(){
 
         // Send button
-        binding.sendButton.setOnClickListener(view -> { sendMessage(); });
-        binding.addFileButton.setOnClickListener(view -> { addFile(); });
+//        binding.sendButton.setOnClickListener(view -> { sendMessage(); });
+//        binding.addFileButton.setOnClickListener(view -> { addFile(); });
 
         // Chat buttons
 //        binding.androidChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_ANDROID); });
 //        binding.firebaseChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_FIREBASE); });
 //        binding.bugChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_BUG); });
+        binding.androidChatButton.setOnClickListener(view -> { startChatActivity(CHAT_NAME_ANDROID); });
+        binding.firebaseChatButton.setOnClickListener(view -> { startChatActivity(CHAT_NAME_FIREBASE); });
+        binding.bugChatButton.setOnClickListener(view -> { startChatActivity(CHAT_NAME_BUG); });
+
+
+//        // Chat Button
+//        binding.groupChatsButton.setOnClickListener(view -> {
+//                startChatActivity(); // TODO precisa indicar em que chat irá cair
+//        });
+
+//        // Chat Button
+//        binding.groupChatsButton.setOnClickListener(view -> {
+//            startChatActivity(); // TODO precisa indicar em que chat irá cair
+//        });
+
+        // Chat Button
+        binding.profileButton.setOnClickListener(view -> {
+            startProfileActivity(); // TODO precisa indicar em que chat irá cair
+        });
     }
 
     @Override
@@ -85,29 +101,29 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
         this.handleResponse(requestCode, resultCode, data);
     }
 
-    @AfterPermissionGranted(RC_IMAGE_PERMS)
-    private void addFile(){
-        if (!EasyPermissions.hasPermissions(this, PERMS)) {
-            EasyPermissions.requestPermissions(this, getString(R.string.popup_title_permission_files_access), RC_IMAGE_PERMS, PERMS);
-            return;
-        }
-        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(i, RC_CHOOSE_PHOTO);
-    }
+//    @AfterPermissionGranted(RC_IMAGE_PERMS)
+//    private void addFile(){
+//        if (!EasyPermissions.hasPermissions(this, PERMS)) {
+//            EasyPermissions.requestPermissions(this, getString(R.string.popup_title_permission_files_access), RC_IMAGE_PERMS, PERMS);
+//            return;
+//        }
+//        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        startActivityForResult(i, RC_CHOOSE_PHOTO);
+//    }
 
     // Handle activity response (after user has chosen or not a picture)
     private void handleResponse(int requestCode, int resultCode, Intent data){
-        if (requestCode == RC_CHOOSE_PHOTO) {
-            if (resultCode == RESULT_OK) { //SUCCESS
-                this.uriImageSelected = data.getData();
-                Glide.with(this) //SHOWING PREVIEW OF IMAGE
-                        .load(this.uriImageSelected)
-                        .apply(RequestOptions.circleCropTransform())
-                        .into(binding.imagePreview);
-            } else {
-                Toast.makeText(this, getString(R.string.toast_title_no_image_chosen), Toast.LENGTH_SHORT).show();
-            }
-        }
+//        if (requestCode == RC_CHOOSE_PHOTO) {
+//            if (resultCode == RESULT_OK) { //SUCCESS
+//                this.uriImageSelected = data.getData();
+//                Glide.with(this) //SHOWING PREVIEW OF IMAGE
+//                        .load(this.uriImageSelected)
+//                        .apply(RequestOptions.circleCropTransform())
+//                        .into(binding.imagePreview);
+//            } else {
+//                Toast.makeText(this, getString(R.string.toast_title_no_image_chosen), Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 
     // Configure RecyclerView
@@ -130,26 +146,26 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
         binding.chatRecyclerView.setAdapter(this.chatAdapter);
     }
 
-    private void sendMessage(){
-        // Check if user can send a message (Text not null + user logged)
-        boolean canSendMessage = !TextUtils.isEmpty(binding.chatEditText.getText()) && userManager.isCurrentUserLogged();
-
-        if (canSendMessage){
-            String messageText = binding.chatEditText.getText().toString();
-            // Check if there is an image to add with the message
-            if(binding.imagePreview.getDrawable() == null){
-                // Create a new message for the chat
-                chatManager.createMessage(messageText, this.currentChatName);
-            }else {
-                // Create a new message with an image for the chat
-                chatManager.sendMessageWithImage(messageText, this.uriImageSelected, this.currentChatName);
-                binding.imagePreview.setImageDrawable(null);
-            }
-            // Reset text field
-            binding.chatEditText.setText("");
-
-        }
-    }
+//    private void sendMessage(){
+//        // Check if user can send a message (Text not null + user logged)
+//        boolean canSendMessage = !TextUtils.isEmpty(binding.chatEditText.getText()) && userManager.isCurrentUserLogged();
+//
+//        if (canSendMessage){
+//            String messageText = binding.chatEditText.getText().toString();
+//            // Check if there is an image to add with the message
+//            if(binding.imagePreview.getDrawable() == null){
+//                // Create a new message for the chat
+//                chatManager.createMessage(messageText, this.currentChatName);
+//            }else {
+//                // Create a new message with an image for the chat
+//                chatManager.sendMessageWithImage(messageText, this.uriImageSelected, this.currentChatName);
+//                binding.imagePreview.setImageDrawable(null);
+//            }
+//            // Reset text field
+//            binding.chatEditText.setText("");
+//
+//        }
+//    }
 
     // Create options for RecyclerView from a Query
     private FirestoreRecyclerOptions<Message> generateOptionsForAdapter(Query query){
@@ -163,5 +179,19 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
     public void onDataChanged() {
         // Show TextView in case RecyclerView is empty
         binding.emptyRecyclerView.setVisibility(this.chatAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+    }
+
+    // Launch Chat Activity
+    private void startChatActivity(String chatId){
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("CHAT_ID", chatId);
+        startActivity(intent);
+    }
+
+    // Launch Chat Activity
+    private void startProfileActivity(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0, 0); // TODO Disable transition. Implement it right for all screens
     }
 }

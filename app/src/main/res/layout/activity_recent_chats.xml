@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TABS CONTAINER -->
+    <LinearLayout
+        android:id="@+id/tabsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <!-- GROUP CHAT -->
+<!--        <ImageButton-->
+<!--            android:id="@+id/groupChatsButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorGreen"-->
+<!--            android:src="@drawable/ic_android_white_24dp"-->
+<!--            android:text="Recent_Chats_Activity"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--            android:tag="10"/>-->
+
+        <TextView
+            android:id="@+id/groupChatsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@string/tab_title_groups_recent_chats_activity"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal"/>
+
+        <TextView
+            android:id="@+id/directChatsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@string/tab_title_chats_recent_chats_activity"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal"/>
+
+
+        <TextView
+            android:id="@+id/profileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@string/tab_title_profile_recent_chats_activity"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal"/>
+
+
+<!--        &lt;!&ndash; DIRECT CHAT &ndash;&gt;-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/directChatsButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorSandLight"-->
+<!--            android:src="@drawable/ic_cloud_white_24dp"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--            android:tag="20"/>-->
+
+<!--        &lt;!&ndash; PROFILE &ndash;&gt;-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/profileButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorSand"-->
+<!--            android:src="@drawable/ic_bug_report_white_24dp"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--            android:tag="30"/>-->
+
+    </LinearLayout>
+
+    <!-- BUTTONS CHAT CONTAINER -->
+    <LinearLayout
+        android:id="@+id/buttonsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_above="@id/buttonsContainer"
+        android:layout_below="@id/tabsContainer">
+
+        <!-- BUTTON CHAT ANDROID -->
+        <ImageButton
+            android:id="@+id/androidChatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorGreen"
+            android:src="@drawable/ic_android_white_24dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:tag="10"/>
+
+        <!-- BUTTON CHAT FIREBASE -->
+        <ImageButton
+            android:id="@+id/firebaseChatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorSandLight"
+            android:src="@drawable/ic_cloud_white_24dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:tag="20"/>
+
+        <!-- BUTTON CHAT BUG -->
+        <ImageButton
+            android:id="@+id/bugChatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorSand"
+            android:src="@drawable/ic_bug_report_white_24dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:tag="30"/>
+
+    </LinearLayout>
+
+
+    <!-- RECYCLER VIEW CONTAINER -->
+    <LinearLayout
+        android:id="@+id/recyclerViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@id/messageContainer"
+        android:layout_below="@id/buttonsContainer">
+
+        <!-- MESSAGE RECYCLER VIEW EMPTY -->
+        <TextView
+            android:id="@+id/emptyRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_large_margin"
+            android:layout_marginTop="@dimen/default_large_margin"
+            android:layout_marginEnd="@dimen/default_large_margin"
+            android:layout_marginBottom="@dimen/default_large_margin"
+            android:text="Recent_Chats_Activity"
+            android:textAlignment="center" />
+
+        <!-- RECYCLER VIEW -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+<!--    &lt;!&ndash; IMAGE CHOSEN PREVIEW &ndash;&gt;-->
+<!--    <ImageView-->
+<!--        android:id="@+id/imagePreview"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_margin="@dimen/default_margin"-->
+<!--        android:layout_above="@id/messageContainer"/>-->
+
+<!--    &lt;!&ndash; ADD MESSAGE CONTAINER &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/messageContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_margin="@dimen/default_margin">-->
+
+<!--        &lt;!&ndash; ADD FILE BUTTON &ndash;&gt;-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/addFileButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:src="@drawable/ic_add_circle_black_24px"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless"/>-->
+
+<!--        &lt;!&ndash; TEXT MESSAGE EDIT TEXT &ndash;&gt;-->
+<!--        <EditText-->
+<!--            android:id="@+id/chatEditText"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:imeOptions="actionDone"-->
+<!--            android:inputType="textMultiLine"-->
+<!--            android:textSize="@dimen/default_text_size"-->
+<!--            android:hint="@string/text_input_title_chat_activity"/>-->
+
+<!--        &lt;!&ndash; ADD MESSAGE BUTTON &ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/sendButton"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless.Colored"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/button_title_chat_activity" />-->
+
+<!--    </LinearLayout>-->
+
+</RelativeLayout>

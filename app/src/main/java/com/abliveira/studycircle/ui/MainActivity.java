@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         // Chat Button
         binding.chatButton.setOnClickListener(view -> {
             if(userManager.isCurrentUserLogged()){
-                startChatActivity();
+                startRecentChatsActivity();
             }else{
                 showSnackBar(getString(R.string.error_not_connected));
             }
@@ -134,4 +134,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         startActivity(intent);
     }
 
+    // Launch Chat Activity
+    private void startRecentChatsActivity(){
+        Intent intent = new Intent(this, RecentChatsActivity.class);
+        startActivity(intent);
+    }
 }

@@ -33,6 +33,15 @@
     <string name="popup_message_choice_no">Não</string>
     <string name="check_box_user_type">Você é um mentor?</string>
 
+    <!-- RECENT CHATS ACTIVITY -->
+    <string name="toolbar_title_recent_chats_activity" translatable="false">StudyCircle</string>
+    <string name="tab_title_groups_recent_chats_activity">Grupos</string>
+    <string name="tab_title_chats_recent_chats_activity">Conversas</string>
+    <string name="tab_title_profile_recent_chats_activity">Perfil</string>
+    <string name="chat_title_1_recent_chats_activity">Android</string>
+    <string name="chat_title_2_recent_chats_activity">Firebase</string>
+    <string name="chat_title_3_recent_chats_activity">Bug</string>
+
     <!-- CHAT ACTIVITY -->
     <string name="toolbar_title_chat_activity">Sala de Bate-Papo</string>
     <string name="text_input_title_chat_activity">Escreva uma mensagem</string>

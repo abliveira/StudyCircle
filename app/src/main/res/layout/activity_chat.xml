@@ -4,47 +4,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- BUTTONS CHAT CONTAINER -->
-    <LinearLayout
-        android:id="@+id/buttonsContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+<!--    &lt;!&ndash; BUTTONS CHAT CONTAINER &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/buttonsContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center">-->
 
-        <!-- BUTTON CHAT ANDROID -->
-        <ImageButton
-            android:id="@+id/androidChatButton"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorGreen"
-            android:src="@drawable/ic_android_white_24dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:tag="10"/>
+<!--        &lt;!&ndash; BUTTON CHAT ANDROID &ndash;&gt;-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/androidChatButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorGreen"-->
+<!--            android:src="@drawable/ic_android_white_24dp"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--            android:tag="10"/>-->
 
-        <!-- BUTTON CHAT FIREBASE -->
-        <ImageButton
-            android:id="@+id/firebaseChatButton"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorSandLight"
-            android:src="@drawable/ic_cloud_white_24dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:tag="20"/>
+<!--        &lt;!&ndash; BUTTON CHAT FIREBASE &ndash;&gt;-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/firebaseChatButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorSandLight"-->
+<!--            android:src="@drawable/ic_cloud_white_24dp"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--            android:tag="20"/>-->
 
-        <!-- BUTTON CHAT BUG -->
-        <ImageButton
-            android:id="@+id/bugChatButton"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorSand"
-            android:src="@drawable/ic_bug_report_white_24dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:tag="30"/>
+<!--        &lt;!&ndash; BUTTON CHAT BUG &ndash;&gt;-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/bugChatButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorSand"-->
+<!--            android:src="@drawable/ic_bug_report_white_24dp"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--            android:tag="30"/>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
     <!-- RECYCLER VIEW CONTAINER -->
