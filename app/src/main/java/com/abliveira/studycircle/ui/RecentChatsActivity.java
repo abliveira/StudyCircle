@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,10 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
     private static final String CHAT_NAME_BUG = "bug";
     private static final String CHAT_NAME_FIREBASE = "firebase";
 
+    private static final String CHAT_NAME_1 = "Chat 1";
+    private static final String CHAT_NAME_2 = "Chat 2";
+    private static final String CHAT_NAME_3 = "Chat 3";
+
     private UserManager userManager = UserManager.getInstance();
     private ChatManager chatManager = ChatManager.getInstance();
 
@@ -54,44 +59,39 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        configureRecentChats();
         configureRecyclerView(CHAT_NAME_ANDROID);
         setupListeners();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+//    }
 
     private void setupListeners(){
-
-        // Send button
-//        binding.sendButton.setOnClickListener(view -> { sendMessage(); });
-//        binding.addFileButton.setOnClickListener(view -> { addFile(); });
 
         // Chat buttons
 //        binding.androidChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_ANDROID); });
 //        binding.firebaseChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_FIREBASE); });
 //        binding.bugChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_BUG); });
-        binding.androidChatButton.setOnClickListener(view -> { startChatActivity(CHAT_NAME_ANDROID); });
-        binding.firebaseChatButton.setOnClickListener(view -> { startChatActivity(CHAT_NAME_FIREBASE); });
-        binding.bugChatButton.setOnClickListener(view -> { startChatActivity(CHAT_NAME_BUG); });
+        binding.chatPreview1.setOnClickListener(view -> { startChatActivity(CHAT_NAME_ANDROID); });
+        binding.chatPreview2.setOnClickListener(view -> { startChatActivity(CHAT_NAME_FIREBASE); });
+        binding.chatPreview3.setOnClickListener(view -> { startChatActivity(CHAT_NAME_BUG); });
 
 
-//        // Chat Button
+        // Tab Buttons
 //        binding.groupChatsButton.setOnClickListener(view -> {
-//                startChatActivity(); // TODO precisa indicar em que chat irá cair
+//                startChatActivity();
 //        });
 
-//        // Chat Button
 //        binding.groupChatsButton.setOnClickListener(view -> {
-//            startChatActivity(); // TODO precisa indicar em que chat irá cair
+//            startChatActivity();
 //        });
 
-        // Chat Button
         binding.profileButton.setOnClickListener(view -> {
-            startProfileActivity(); // TODO precisa indicar em que chat irá cair
+            startProfileActivity();
         });
     }
 
@@ -124,6 +124,15 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
 //                Toast.makeText(this, getString(R.string.toast_title_no_image_chosen), Toast.LENGTH_SHORT).show();
 //            }
 //        }
+    }
+
+    private void configureRecentChats(){
+        TextView chatNamePreview1TextView = (TextView)findViewById(R.id.chatNamePreview1);
+        chatNamePreview1TextView.setText(CHAT_NAME_1);
+        TextView chatNamePreview2TextView = (TextView)findViewById(R.id.chatNamePreview2);
+        chatNamePreview2TextView.setText(CHAT_NAME_2);
+        TextView chatNamePreview3TextView = (TextView)findViewById(R.id.chatNamePreview3);
+        chatNamePreview3TextView.setText(CHAT_NAME_3);
     }
 
     // Configure RecyclerView

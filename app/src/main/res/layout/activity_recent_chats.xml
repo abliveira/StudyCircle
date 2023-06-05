@@ -1,27 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <!-- TABS CONTAINER -->
     <LinearLayout
         android:id="@+id/tabsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <!-- GROUP CHAT -->
-<!--        <ImageButton-->
-<!--            android:id="@+id/groupChatsButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@color/colorGreen"-->
-<!--            android:src="@drawable/ic_android_white_24dp"-->
-<!--            android:text="Recent_Chats_Activity"-->
-<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-<!--            android:tag="10"/>-->
+        <!--        &lt;!&ndash; GROUP CHAT&ndash;&gt;-->
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/groupChatsButton"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:background="@color/colorGreen"-->
+        <!--            android:src="@drawable/ic_android_white_24dp"-->
+        <!--            android:text="Recent_Chats_Activity"-->
+        <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+        <!--            android:tag="10"/>-->
+
+        <!--        &lt;!&ndash; DIRECT CHAT &ndash;&gt;-->
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/directChatsButton"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:background="@color/colorSandLight"-->
+        <!--            android:src="@drawable/ic_cloud_white_24dp"-->
+        <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+        <!--            android:tag="20"/>-->
+
+        <!--        &lt;!&ndash; PROFILE &ndash;&gt;-->
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/profileButton"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:background="@color/colorSand"-->
+        <!--            android:src="@drawable/ic_bug_report_white_24dp"-->
+        <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+        <!--            android:tag="30"/>-->
 
         <TextView
             android:id="@+id/groupChatsButton"
@@ -34,7 +58,7 @@
             android:text="@string/tab_title_groups_recent_chats_activity"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
-            android:textStyle="normal"/>
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/directChatsButton"
@@ -47,8 +71,7 @@
             android:text="@string/tab_title_chats_recent_chats_activity"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
-            android:textStyle="normal"/>
-
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/profileButton"
@@ -61,86 +84,181 @@
             android:text="@string/tab_title_profile_recent_chats_activity"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
-            android:textStyle="normal"/>
-
-
-<!--        &lt;!&ndash; DIRECT CHAT &ndash;&gt;-->
-<!--        <ImageButton-->
-<!--            android:id="@+id/directChatsButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@color/colorSandLight"-->
-<!--            android:src="@drawable/ic_cloud_white_24dp"-->
-<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-<!--            android:tag="20"/>-->
-
-<!--        &lt;!&ndash; PROFILE &ndash;&gt;-->
-<!--        <ImageButton-->
-<!--            android:id="@+id/profileButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@color/colorSand"-->
-<!--            android:src="@drawable/ic_bug_report_white_24dp"-->
-<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-<!--            android:tag="30"/>-->
+            android:textStyle="normal" />
 
     </LinearLayout>
 
     <!-- BUTTONS CHAT CONTAINER -->
+
     <LinearLayout
-        android:id="@+id/buttonsContainer"
+        android:id="@+id/chatPreviewContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_above="@id/buttonsContainer"
-        android:layout_below="@id/tabsContainer">
+        android:orientation="vertical">
 
-        <!-- BUTTON CHAT ANDROID -->
-        <ImageButton
-            android:id="@+id/androidChatButton"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorGreen"
-            android:src="@drawable/ic_android_white_24dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:tag="10"/>
+        <RelativeLayout
+            android:id="@+id/chatPreview1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1">
 
-        <!-- BUTTON CHAT FIREBASE -->
-        <ImageButton
-            android:id="@+id/firebaseChatButton"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorSandLight"
-            android:src="@drawable/ic_cloud_white_24dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:tag="20"/>
+            <ImageView
+                android:id="@+id/contactImageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_anon_user_48dp" />
 
-        <!-- BUTTON CHAT BUG -->
-        <ImageButton
-            android:id="@+id/bugChatButton"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorSand"
-            android:src="@drawable/ic_bug_report_white_24dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:tag="30"/>
+            <TextView
+                android:id="@+id/chatNamePreview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/contactImageView1"
+                android:text="Chat Name"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/chatPreview1Separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="45dp"
+            android:background="@color/colorLightGrey" />
+
+        <RelativeLayout
+            android:id="@+id/chatPreview2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/contactImageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_anon_user_48dp" />
+
+            <TextView
+                android:id="@+id/chatNamePreview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/contactImageView2"
+                android:text="Chat Name"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/chatPreview2Separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="45dp"
+            android:background="@color/colorLightGrey" />
+
+        <RelativeLayout
+            android:id="@+id/chatPreview3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/contactImageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_anon_user_48dp" />
+
+            <TextView
+                android:id="@+id/chatNamePreview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/contactImageView3"
+                android:text="Chat Name"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/chatPreview3Separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="45dp"
+            android:background="@color/colorLightGrey" />
 
     </LinearLayout>
 
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/buttonsContainer"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_weight="1"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        &lt;!&ndash; BUTTON CHAT ANDROID &ndash;&gt;-->
+
+    <!--        &lt;!&ndash; BUTTON CHAT FIREBASE &ndash;&gt;-->
+
+    <!--        &lt;!&ndash; BUTTON CHAT BUG &ndash;&gt;-->
+
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/androidChatButton"-->
+    <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:background="@color/colorGreen"-->
+    <!--            android:src="@drawable/ic_android_white_24dp"-->
+    <!--            android:tag="10" />-->
+
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/firebaseChatButton"-->
+    <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:background="@color/colorSandLight"-->
+    <!--            android:src="@drawable/ic_cloud_white_24dp"-->
+    <!--            android:tag="20" />-->
+
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/bugChatButton"-->
+    <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:background="@color/colorSand"-->
+    <!--            android:src="@drawable/ic_bug_report_white_24dp"-->
+    <!--            android:tag="30" />-->
+    <!--    </LinearLayout>-->
 
     <!-- RECYCLER VIEW CONTAINER -->
     <LinearLayout
         android:id="@+id/recyclerViewContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_above="@id/messageContainer"
-        android:layout_below="@id/buttonsContainer">
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
 
         <!-- MESSAGE RECYCLER VIEW EMPTY -->
         <TextView
@@ -162,50 +280,51 @@
 
     </LinearLayout>
 
-<!--    &lt;!&ndash; IMAGE CHOSEN PREVIEW &ndash;&gt;-->
-<!--    <ImageView-->
-<!--        android:id="@+id/imagePreview"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_margin="@dimen/default_margin"-->
-<!--        android:layout_above="@id/messageContainer"/>-->
+    <!--    &lt;!&ndash; IMAGE CHOSEN PREVIEW &ndash;&gt;-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imagePreview"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_margin="@dimen/default_margin"-->
+    <!--        android:layout_above="@id/messageContainer"/>-->
 
-<!--    &lt;!&ndash; ADD MESSAGE CONTAINER &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:id="@+id/messageContainer"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_margin="@dimen/default_margin">-->
+    <!--    &lt;!&ndash; ADD MESSAGE CONTAINER &ndash;&gt;-->
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/messageContainer"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_margin="@dimen/default_margin">-->
 
-<!--        &lt;!&ndash; ADD FILE BUTTON &ndash;&gt;-->
-<!--        <ImageButton-->
-<!--            android:id="@+id/addFileButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:adjustViewBounds="true"-->
-<!--            android:src="@drawable/ic_add_circle_black_24px"-->
-<!--            style="@style/Widget.AppCompat.Button.Borderless"/>-->
+    <!--        &lt;!&ndash; ADD FILE BUTTON &ndash;&gt;-->
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/addFileButton"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:adjustViewBounds="true"-->
+    <!--            android:src="@drawable/ic_add_circle_black_24px"-->
+    <!--            style="@style/Widget.AppCompat.Button.Borderless"/>-->
 
-<!--        &lt;!&ndash; TEXT MESSAGE EDIT TEXT &ndash;&gt;-->
-<!--        <EditText-->
-<!--            android:id="@+id/chatEditText"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:imeOptions="actionDone"-->
-<!--            android:inputType="textMultiLine"-->
-<!--            android:textSize="@dimen/default_text_size"-->
-<!--            android:hint="@string/text_input_title_chat_activity"/>-->
+    <!--        &lt;!&ndash; TEXT MESSAGE EDIT TEXT &ndash;&gt;-->
+    <!--        <EditText-->
+    <!--            android:id="@+id/chatEditText"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:imeOptions="actionDone"-->
+    <!--            android:inputType="textMultiLine"-->
+    <!--            android:textSize="@dimen/default_text_size"-->
+    <!--            android:hint="@string/text_input_title_chat_activity"/>-->
 
-<!--        &lt;!&ndash; ADD MESSAGE BUTTON &ndash;&gt;-->
-<!--        <Button-->
-<!--            android:id="@+id/sendButton"-->
-<!--            style="@style/Widget.AppCompat.Button.Borderless.Colored"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/button_title_chat_activity" />-->
+    <!--        &lt;!&ndash; ADD MESSAGE BUTTON &ndash;&gt;-->
+    <!--        <Button-->
+    <!--            android:id="@+id/sendButton"-->
+    <!--            style="@style/Widget.AppCompat.Button.Borderless.Colored"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="@string/button_title_chat_activity" />-->
 
-<!--    </LinearLayout>-->
+    <!--    </LinearLayout>-->
 
-</RelativeLayout>
+    <!--</RelativeLayout>-->
+</LinearLayout>
