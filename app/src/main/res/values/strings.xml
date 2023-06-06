@@ -16,15 +16,13 @@
     <string name="error_no_internet">Rede indisponível</string>
     <string name="error_unknown_error">Um erro ocorreu&#8230;</string>
     <string name="connection_succeed">Autentificação bem-sucedida!</string>
-    <string name="button_login_text_logged">Veja o seu perfil</string>
     <string name="button_login_text_not_logged">Conexão</string>
 
     <!-- LOGIN ACTIVITY -->
-    <string name="toolbar_title_login_activity">Seu Perfil</string>
     <string name="text_input_username">Nome de usuário</string>
     <string name="text_view_email">Endereço de email:</string>
-    <string name="button_update_account">Alterar nome de usuário</string>
-    <string name="button_delete_account">Excluir minha conta</string>
+    <string name="button_update_account">Salvar</string>
+    <string name="button_delete_account">Excluir conta</string>
     <string name="button_sign_out_account">Desconectar</string>
     <string name="info_no_email_found">Email não encontrado</string>
     <string name="info_no_username_found">Nome de usuário não encontrado</string>
@@ -49,4 +47,13 @@
     <string name="text_view_chat_error">Não há mensagens nesta conversa&#8230;</string>
     <string name="popup_title_permission_files_access">Para anexar uma foto, StudyCircle requer permissões adicionais.</string>
     <string name="toast_title_no_image_chosen">Nenhuma imagem selecionada&#8230;</string>
+
+    <!-- PROFILE ACTIVITY -->
+    <string name="userName_hint_profile_activity">Nome</string>
+    <string name="userType_hint_profile_activity">Tipo de Perfil</string>
+    <string name="userType_student_profile_activity">Aluno</string>
+    <string name="userType_professor_profile_activity">Professor</string>
+    <string name="userType_request_profile_activity">Requisitar Troca</string>
+    <string name="userType_dialog_profile_activity">Deseja trocar o seu tipo de perfil?</string>
+
 </resources>

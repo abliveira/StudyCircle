@@ -18,6 +18,7 @@ import com.abliveira.studycircle.manager.UserManager;
 public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
 
     private UserManager userManager = UserManager.getInstance();
+    private boolean currentUserType;
 
     @Override
     ActivityProfileBinding getViewBinding() {
@@ -31,6 +32,12 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
         updateUIWithUserData();
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(0, 0);
+    }
+
     /* These methods use the Singleton object  AuthUI.getInstance() from the FirebaseUI library.
     The latter has several methods, including  signOut() and  delete(), which both return an object
     of type Task, which allows these calls to be made asynchronously.
@@ -38,12 +45,29 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
     These Tasks have several Callback methods to check if and when they end correctly. */
     private void setupListeners(){
 
-        // UserType Checkbox
-        binding.userTypeCheckBox.setOnCheckedChangeListener((compoundButton, checked) -> {
-            userManager.updateUserType(checked);
+        binding.groupChatsButton.setOnClickListener(view -> {
+            finish();
+            overridePendingTransition(0, 0);
         });
 
-        // Update button
+//        binding.userTypeCheckBox.setOnCheckedChangeListener((compoundButton, checked) -> {
+//            userManager.updateUserType(checked);
+//        });
+
+        binding.userTypeRequestButton.setOnClickListener(view -> {
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.userType_dialog_profile_activity)
+                    .setPositiveButton(R.string.popup_message_choice_yes, (dialogInterface, i) -> {
+                            userManager.updateUserType(!currentUserType);
+                            getUserData();
+                        }
+                    )
+                    .setNegativeButton(R.string.popup_message_choice_no, null)
+                    .show();
+//            userManager.updateUserType(!currentUserType);
+//            getUserData();
+        });
+
         binding.updateButton.setOnClickListener(view -> {
             binding.progressBar.setVisibility(View.VISIBLE);
             userManager.updateUsername(binding.usernameEditText.getText().toString())
@@ -52,16 +76,13 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
                     });
         });
 
-        // Sign out button
         binding.signOutButton.setOnClickListener(view -> {
             userManager.signOut(this).addOnSuccessListener(aVoid -> {
                 finish();
             });
         });
 
-        // Delete button
         binding.deleteButton.setOnClickListener(view -> {
-
             new AlertDialog.Builder(this)
                     .setMessage(R.string.popup_message_confirmation_delete_account)
                     .setPositiveButton(R.string.popup_message_choice_yes, (dialogInterface, i) ->
@@ -73,7 +94,6 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
                     )
                     .setNegativeButton(R.string.popup_message_choice_no, null)
                     .show();
-
         });
     }
 
@@ -93,8 +113,13 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
         userManager.getUserData().addOnSuccessListener(user -> {
             // Set the data with the user information
             String username = TextUtils.isEmpty(user.getUsername()) ? getString(R.string.info_no_username_found) : user.getUsername();
-            binding.userTypeCheckBox.setChecked(user.getUserType());
+//            binding.userTypeCheckBox.setChecked(user.getUserType());
             binding.usernameEditText.setText(username);
+
+            currentUserType = user.getUserType();
+            String userType = currentUserType ? getString(R.string.userType_professor_profile_activity) : getString(R.string.userType_student_profile_activity);
+
+            binding.userTypeTextBox.setText(userType);
         });
     }
 
@@ -107,12 +132,15 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
 
     private void setTextUserData(FirebaseUser user){
 
-        //Get email & username from User
         String email = TextUtils.isEmpty(user.getEmail()) ? getString(R.string.info_no_email_found) : user.getEmail();
         String username = TextUtils.isEmpty(user.getDisplayName()) ? getString(R.string.info_no_username_found) : user.getDisplayName();
 
-        //Update views with data
         binding.usernameEditText.setText(username);
         binding.emailTextView.setText(email);
     }
+
+//    private void startRecentChatsActivity(){
+//        Intent intent = new Intent(this, RecentChatsActivity.class);
+//        startActivity(intent);
+//    }
 }

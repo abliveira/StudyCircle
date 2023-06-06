@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     @Override
     protected void onResume() {
         super.onResume();
-        updateLoginButton();
+//        updateLoginButton();
     }
 
     @Override
@@ -46,10 +46,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         this.handleResponseAfterSignIn(requestCode, resultCode, data);
     }
 
-    // Update Login Button when activity is resuming
-    private void updateLoginButton(){
-        binding.loginButton.setText(userManager.isCurrentUserLogged() ? getString(R.string.button_login_text_logged) : getString(R.string.button_login_text_not_logged));
-    }
+//    // Update Login Button when activity is resuming
+//    private void updateLoginButton(){
+//        binding.loginButton.setText(userManager.isCurrentUserLogged() ? getString(R.string.button_login_text_logged) : getString(R.string.button_login_text_not_logged));
+//    }
 
     // Method that handles response after SignIn Activity close
     private void handleResponseAfterSignIn(int requestCode, int resultCode, Intent data){
@@ -83,11 +83,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private void setupListeners(){
         // Login/Profile Button
         binding.loginButton.setOnClickListener(view -> {
-            if(userManager.isCurrentUserLogged()){
-                startProfileActivity();
-            }else{
+//            if(userManager.isCurrentUserLogged()){
+//                startProfileActivity();
+//            }else{
                 startSignInActivity();
-            }
+//            }
         });
         // Chat Button
         binding.chatButton.setOnClickListener(view -> {
@@ -128,13 +128,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 RC_SIGN_IN);
     }
 
-    // Launch Chat Activity
-    private void startChatActivity(){
-        Intent intent = new Intent(this, ChatActivity.class);
-        startActivity(intent);
-    }
+//    private void startChatActivity(){
+//        Intent intent = new Intent(this, ChatActivity.class);
+//        startActivity(intent);
+//    }
 
-    // Launch Chat Activity
     private void startRecentChatsActivity(){
         Intent intent = new Intent(this, RecentChatsActivity.class);
         startActivity(intent);

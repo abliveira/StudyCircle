@@ -13,15 +13,13 @@
     <string name="error_no_internet">Network unavailable</string>
     <string name="error_unknown_error">An unknown error occurred&#8230;</string>
     <string name="connection_succeed">Login successful!</string>
-    <string name="button_login_text_logged">View your profile</string>
     <string name="button_login_text_not_logged">Log In</string>
 
     <!-- LOGIN ACTIVITY -->
-    <string name="toolbar_title_login_activity">Your Profile</string>
     <string name="text_input_username">Username</string>
     <string name="text_view_email">Email address:</string>
-    <string name="button_update_account">Change username</string>
-    <string name="button_delete_account">Delete my account</string>
+    <string name="button_update_account">Save</string>
+    <string name="button_delete_account">Delete account</string>
     <string name="button_sign_out_account">Log Out</string>
     <string name="info_no_email_found">No email address found</string>
     <string name="info_no_username_found">No username found</string>
@@ -42,4 +40,10 @@
     <string name="text_view_chat_error">This thread has no messages</string>
     <string name="popup_title_permission_files_access">To attach a photo, StudyCircle requires additional permissions.</string>
     <string name="toast_title_no_image_chosen">No image chosen&#8230;</string>
+    <string name="userName_hint_profile_activity">Name</string>
+    <string name="userType_hint_profile_activity">Profile Type</string>
+    <string name="userType_student_profile_activity">Student</string>
+    <string name="userType_professor_profile_activity">Professor</string>
+    <string name="userType_dialog_profile_activity">Do you want to change your profile type?</string>
+    <string name="userType_request_profile_activity">Request Change</string>
 </resources>

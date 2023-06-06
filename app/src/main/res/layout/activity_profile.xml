@@ -7,24 +7,75 @@
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
+    <!-- TABS CONTAINER -->
+    <LinearLayout
+        android:id="@+id/tabsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/groupChatsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@string/tab_title_groups_recent_chats_activity"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/directChatsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@string/tab_title_chats_recent_chats_activity"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/profileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@string/tab_title_profile_recent_chats_activity"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
     <!-- USER DATA CONTAINER -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center"
+        android:gravity="top"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_large_margin"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
             android:gravity="center">
 
             <Space
                 android:layout_width="30dip"
                 android:layout_height="30dip"
-                android:layout_weight="1" />
+                android:layout_margin="@dimen/default_large_margin" />
 
             <!-- PROFILE IMAGE -->
             <ImageView
@@ -69,20 +120,85 @@
         </LinearLayout>
 
         <!-- PROFILE USERNAME -->
-        <EditText
-            android:id="@+id/usernameEditText"
+
+        <!-- CHECKBOX USER TYPE -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
-            android:text="@string/text_input_username"
-            android:textSize="@dimen/default_text_size" />
+            android:hint="@string/userName_hint_profile_activity">
 
-        <!-- CHECKBOX USER TYPE -->
-        <CheckBox
-            android:id="@+id/userTypeCheckBox"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/text_input_username"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/userTypeCheckBox"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/check_box_user_type" />-->
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/check_box_user_type" />
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userTypeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="@string/userType_hint_profile_activity"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userTypeTextBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoText="false"
+                    android:clickable="false"
+                    android:editable="false"
+                    android:elegantTextHeight="false"
+                    android:enabled="true"
+                    android:focusable="auto"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/roboto"
+                    android:freezesText="true"
+                    android:hint="hint"
+                    android:linksClickable="false"
+                    android:longClickable="false"
+                    android:selectAllOnFocus="false"
+                    android:text="@string/userType_hint_profile_activity"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textIsSelectable="false"
+                    android:textStyle="normal"
+                    app:textInputLayoutFocusedRectEnabled="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/userTypeRequestButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/userTypeTextView"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:focusable="auto"
+                android:fontFamily="@font/roboto_medium"
+                android:letterSpacing="0.1"
+                android:text="@string/userType_request_profile_activity"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
