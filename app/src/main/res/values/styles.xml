@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/roboto</item> // TODO Now prob we can remove all
     </style>
 
     <!-- STYLE FOR MAIN ACTIVITY -->
@@ -16,10 +17,9 @@
 
     <!-- STYLE SIGN-IN ACTIVITY (FIREBASE UI-->
     <style name="LoginTheme" parent="AppTheme">
-        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
         <item name="colorControlNormal">@android:color/darker_gray</item>
         <item name="colorControlActivated">@android:color/darker_gray</item>
         <item name="colorControlHighlight">@android:color/darker_gray</item>
@@ -31,5 +31,4 @@
 <!--        <item name="windowNoTitle">true</item>-->
         <item name="android:textColorHint">@android:color/darker_gray</item>
     </style>
-
 </resources>

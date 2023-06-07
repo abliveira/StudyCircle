@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">StudyCircle</string>
 
-    <string name="main_activity_description">Converse com seus mentores</string>
-
     <string name="login">Conectar</string>
-    <string name="chat_with_mentor">Converse com um mentor</string>
+    <string name="welcome_message_main_activity">Bem-vindo!</string>
+    <string name="help_message_main_activity">Conecte-se para prosseguir</string>
 
     <!-- NOTIFICATION SERVICE -->
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>

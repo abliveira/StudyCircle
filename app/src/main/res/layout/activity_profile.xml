@@ -132,7 +132,6 @@
                 android:id="@+id/usernameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
                 android:text="@string/text_input_username"
                 android:textSize="14sp"
                 android:textStyle="normal" />
@@ -168,7 +167,6 @@
                     android:enabled="true"
                     android:focusable="auto"
                     android:focusableInTouchMode="false"
-                    android:fontFamily="@font/roboto"
                     android:freezesText="true"
                     android:hint="hint"
                     android:linksClickable="false"

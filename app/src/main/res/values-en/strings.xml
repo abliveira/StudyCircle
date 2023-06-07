@@ -1,8 +1,8 @@
 <resources>
-    <string name="main_activity_description">Chat with your mentors</string>
 
     <string name="login">Login</string>
-    <string name="chat_with_mentor">Chat with a mentor</string>
+    <string name="welcome_message_main_activity">Welcome!</string>
+    <string name="help_message_main_activity">Login to proceed</string>
 
     <!-- NOTIFICATION SERVICE -->
     <string name="notification_title">You have a new notification</string>
@@ -43,7 +43,7 @@
     <string name="userName_hint_profile_activity">Name</string>
     <string name="userType_hint_profile_activity">Profile Type</string>
     <string name="userType_student_profile_activity">Student</string>
-    <string name="userType_professor_profile_activity">Professor</string>
+    <string name="userType_professor_profile_activity">Teacher</string>
     <string name="userType_dialog_profile_activity">Do you want to change your profile type?</string>
     <string name="userType_request_profile_activity">Request Change</string>
 </resources>
