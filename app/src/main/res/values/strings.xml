@@ -41,8 +41,7 @@
 
     <!-- CHAT ACTIVITY -->
     <string name="toolbar_title_chat_activity">Sala de Bate-Papo</string>
-    <string name="text_input_title_chat_activity">Escreva uma mensagem</string>
-    <string name="button_title_chat_activity">ENVIAR</string>
+    <string name="text_input_title_chat_activity">Digite uma mensagem</string>
     <string name="text_view_chat_error">Não há mensagens nesta conversa&#8230;</string>
     <string name="popup_title_permission_files_access">Para anexar uma foto, StudyCircle requer permissões adicionais.</string>
     <string name="toast_title_no_image_chosen">Nenhuma imagem selecionada&#8230;</string>

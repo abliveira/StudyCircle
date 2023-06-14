@@ -46,8 +46,6 @@
 
 <!--    </LinearLayout>-->
 
-
-    <!-- RECYCLER VIEW CONTAINER -->
     <LinearLayout
         android:id="@+id/recyclerViewContainer"
         android:layout_width="match_parent"
@@ -56,7 +54,6 @@
         android:layout_above="@id/messageContainer">
 <!--        android:layout_below="@id/buttonsContainer">-->
 
-        <!-- MESSAGE RECYCLER VIEW EMPTY -->
         <TextView
             android:id="@+id/emptyRecyclerView"
             android:layout_width="match_parent"
@@ -73,7 +70,6 @@
 
     </LinearLayout>
 
-    <!-- IMAGE CHOSEN PREVIEW -->
     <ImageView
         android:id="@+id/imagePreview"
         android:layout_width="50dp"
@@ -81,41 +77,43 @@
         android:layout_margin="@dimen/default_margin"
         android:layout_above="@id/messageContainer"/>
 
-    <!-- ADD MESSAGE CONTAINER -->
     <LinearLayout
         android:id="@+id/messageContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/default_margin">
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:gravity="center">
 
-        <!-- ADD FILE BUTTON -->
         <ImageButton
             android:id="@+id/addFileButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/ic_add_circle_black_24px"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+            android:src="@drawable/ic_add_24dp" />
 
-        <!-- TEXT MESSAGE EDIT TEXT -->
         <EditText
             android:id="@+id/chatEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="@string/text_input_title_chat_activity"
             android:imeOptions="actionDone"
             android:inputType="textMultiLine"
-            android:textSize="@dimen/default_text_size"
-            android:hint="@string/text_input_title_chat_activity"/>
+            android:textColorHint="@color/colorDarkGrey"
+            android:textSize="@dimen/default_text_size" />
 
-        <!-- ADD MESSAGE BUTTON -->
-        <Button
+        <ImageButton
             android:id="@+id/sendButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_title_chat_activity" />
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_send_24dp" />
 
     </LinearLayout>
 
