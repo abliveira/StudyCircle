@@ -28,6 +28,7 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setElevation(0);
         setupListeners();
         updateUIWithUserData();
     }

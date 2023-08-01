@@ -9,31 +9,29 @@
     android:layout_margin="@dimen/default_margin">
 
     <!-- PROFILE CONTAINER -->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/profileContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/default_margin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- IMAGE VIEW PROFILE -->
+        <ImageView
+            android:id="@+id/profileUserType"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            app:srcCompat="@drawable/baseline_circle_24" />
+
         <ImageView
             android:id="@+id/profileImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_anon_user_48dp"/>
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/ic_default_picture_48dp" />
 
-        <!-- IMAGE USER TYPE -->
-        <ImageView
-            android:id="@+id/profileUserType"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            app:srcCompat="@drawable/ic_school_black_24dp"/>
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <!-- MESSAGE CONTAINER -->
     <LinearLayout
@@ -79,9 +77,10 @@
                 android:id="@+id/messageTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/default_margin"
+                android:textColor="@color/colorDarkGrey"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/default_text_size"
-                android:padding="@dimen/default_margin"
                 tools:text="Text example" />
 
         </LinearLayout>

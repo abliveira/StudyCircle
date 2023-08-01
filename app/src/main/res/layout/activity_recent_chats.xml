@@ -13,40 +13,6 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <!--        &lt;!&ndash; GROUP CHAT&ndash;&gt;-->
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/groupChatsButton"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="50dp"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:background="@color/colorGreen"-->
-        <!--            android:src="@drawable/ic_android_white_24dp"-->
-        <!--            android:text="Recent_Chats_Activity"-->
-        <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-        <!--            android:tag="10"/>-->
-
-        <!--        &lt;!&ndash; DIRECT CHAT &ndash;&gt;-->
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/directChatsButton"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="50dp"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:background="@color/colorSandLight"-->
-        <!--            android:src="@drawable/ic_cloud_white_24dp"-->
-        <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-        <!--            android:tag="20"/>-->
-
-        <!--        &lt;!&ndash; PROFILE &ndash;&gt;-->
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/profileButton"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="50dp"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:background="@color/colorSand"-->
-        <!--            android:src="@drawable/ic_bug_report_white_24dp"-->
-        <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-        <!--            android:tag="30"/>-->
-
         <TextView
             android:id="@+id/groupChatsButton"
             android:layout_width="wrap_content"
@@ -69,7 +35,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="@string/tab_title_chats_recent_chats_activity"
-            android:textColor="#FFFFFF"
+            android:textColor="#B3FFFFFF"
             android:textSize="14sp"
             android:textStyle="normal" />
 
@@ -82,7 +48,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="@string/tab_title_profile_recent_chats_activity"
-            android:textColor="#FFFFFF"
+            android:textColor="#B3FFFFFF"
             android:textSize="14sp"
             android:textStyle="normal" />
 
@@ -110,7 +76,7 @@
                 android:id="@+id/contactImageView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_anon_user_48dp" />
+                app:srcCompat="@drawable/ic_default_picture_48dp" />
 
             <TextView
                 android:id="@+id/chatNamePreview1"
@@ -146,7 +112,7 @@
                 android:id="@+id/contactImageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_anon_user_48dp" />
+                app:srcCompat="@drawable/ic_default_picture_48dp" />
 
             <TextView
                 android:id="@+id/chatNamePreview2"
@@ -182,7 +148,7 @@
                 android:id="@+id/contactImageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_anon_user_48dp" />
+                app:srcCompat="@drawable/ic_default_picture_48dp" />
 
             <TextView
                 android:id="@+id/chatNamePreview3"
@@ -206,51 +172,6 @@
             android:background="@color/colorLightGrey" />
 
     </LinearLayout>
-
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/buttonsContainer"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_weight="1"-->
-    <!--        android:gravity="center"-->
-    <!--        android:orientation="vertical">-->
-
-    <!--        &lt;!&ndash; BUTTON CHAT ANDROID &ndash;&gt;-->
-
-    <!--        &lt;!&ndash; BUTTON CHAT FIREBASE &ndash;&gt;-->
-
-    <!--        &lt;!&ndash; BUTTON CHAT BUG &ndash;&gt;-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/androidChatButton"-->
-    <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:background="@color/colorGreen"-->
-    <!--            android:src="@drawable/ic_android_white_24dp"-->
-    <!--            android:tag="10" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/firebaseChatButton"-->
-    <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:background="@color/colorSandLight"-->
-    <!--            android:src="@drawable/ic_cloud_white_24dp"-->
-    <!--            android:tag="20" />-->
-
-    <!--        <ImageButton-->
-    <!--            android:id="@+id/bugChatButton"-->
-    <!--            style="@style/Widget.AppCompat.Button.Borderless"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:background="@color/colorSand"-->
-    <!--            android:src="@drawable/ic_bug_report_white_24dp"-->
-    <!--            android:tag="30" />-->
-    <!--    </LinearLayout>-->
 
     <!-- RECYCLER VIEW CONTAINER -->
     <LinearLayout

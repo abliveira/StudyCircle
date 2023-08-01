@@ -1,5 +1,6 @@
 package com.abliveira.studycircle.ui.chat;
 
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.View;
@@ -32,8 +33,8 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
 
     private ItemChatBinding binding;
 
-    private final int colorCurrentUser;
-    private final int colorRemoteUser;
+//    private final int colorCurrentUser;
+//    private final int colorRemoteUser;
 
     private boolean isSender;
 
@@ -42,9 +43,9 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         this.isSender = isSender;
         binding = ItemChatBinding.bind(itemView);
 
-        // Setup default colors
-        colorCurrentUser = ContextCompat.getColor(itemView.getContext(), R.color.colorAccent);
-        colorRemoteUser = ContextCompat.getColor(itemView.getContext(), R.color.colorPrimary);
+//        // Setup default colors
+//        colorCurrentUser = ContextCompat.getColor(itemView.getContext(), R.color.colorAccent);
+//        colorRemoteUser = ContextCompat.getColor(itemView.getContext(), R.color.colorPrimary);
     }
 
     public void updateWithMessage(Message message, RequestManager glide){
@@ -58,6 +59,7 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
 
         // Update userType
         binding.profileUserType.setVisibility(message.getUserSender().getUserType() ? View.VISIBLE : View.INVISIBLE);
+//        binding.profileContainer.setBackground(message.getUserSender().getUserType() ? null : R.drawable.baseline_circle_24b));
 
         // Update profile picture
         if (message.getUserSender().getUrlPicture() != null)
@@ -80,7 +82,7 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
     private void updateLayoutFromSenderType(){
 
         //Update Message Bubble Color Background
-        ((GradientDrawable) binding.messageTextContainer.getBackground()).setColor(isSender ? colorCurrentUser : colorRemoteUser);
+//        ((GradientDrawable) binding.messageTextContainer.getBackground()).setColor(isSender ? colorCurrentUser : colorRemoteUser);
         binding.messageTextContainer.requestLayout();
 
         if(!isSender){

@@ -59,6 +59,7 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setElevation(0);
         configureRecentChats();
         configureRecyclerView(CHAT_NAME_ANDROID);
         setupListeners();

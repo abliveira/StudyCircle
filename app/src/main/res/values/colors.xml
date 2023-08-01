@@ -15,5 +15,6 @@
     <color name="colorSand">#EBCB94</color>
 
     <color name="colorDarkGrey">#666666</color>
+    <color name="colorMidGrey">#AAAAAA</color>
     <color name="colorLightGrey">#D3D3D3</color>
 </resources>
