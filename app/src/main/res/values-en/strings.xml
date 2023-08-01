@@ -8,16 +8,13 @@
     <string name="notification_title">You have a new notification</string>
 
     <!-- MAIN ACTIVITY -->
-    <string name="error_not_connected">Please log in first</string>
     <string name="error_authentication_canceled">Login aborted&#8230;</string>
     <string name="error_no_internet">Network unavailable</string>
     <string name="error_unknown_error">An unknown error occurred&#8230;</string>
     <string name="connection_succeed">Login successful!</string>
-    <string name="button_login_text_not_logged">Log In</string>
 
     <!-- LOGIN ACTIVITY -->
     <string name="text_input_username">Username</string>
-    <string name="text_view_email">Email address:</string>
     <string name="button_update_account">Save</string>
     <string name="button_delete_account">Delete account</string>
     <string name="button_sign_out_account">Log Out</string>
@@ -26,7 +23,6 @@
     <string name="popup_message_confirmation_delete_account">Are you sure you want to delete your account?</string>
     <string name="popup_message_choice_yes">Yes</string>
     <string name="popup_message_choice_no">No</string>
-    <string name="check_box_user_type">Are you a mentor?</string>
 
     <!-- RECENT CHATS ACTIVITY -->
     <string name="tab_title_groups_recent_chats_activity">Groups</string>

@@ -37,10 +37,6 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
     private static final int RC_IMAGE_PERMS = 100;
     private static final int RC_CHOOSE_PHOTO = 200;
 
-    private static final String CHAT_NAME_ANDROID = "android";
-    private static final String CHAT_NAME_BUG = "bug";
-    private static final String CHAT_NAME_FIREBASE = "firebase";
-
     private UserManager userManager = UserManager.getInstance();
     private ChatManager chatManager = ChatManager.getInstance();
 
@@ -56,7 +52,7 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
         super.onCreate(savedInstanceState);
         Bundle b = getIntent().getExtras();
         String chatId = b.getString("CHAT_ID");
-        setTitle(b.getString("CHAT_ID"));
+        setTitle(b.getString("CHAT_NAME"));
         configureRecyclerView(chatId);
         setupListeners();
     }
@@ -73,10 +69,6 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
         binding.sendButton.setOnClickListener(view -> { sendMessage(); });
         binding.addFileButton.setOnClickListener(view -> { addFile(); });
 
-        // Chat buttons
-//        binding.androidChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_ANDROID); });
-//        binding.firebaseChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_FIREBASE); });
-//        binding.bugChatButton.setOnClickListener(view -> { this.configureRecyclerView(CHAT_NAME_BUG); });
     }
 
     @Override

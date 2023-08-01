@@ -20,6 +20,8 @@ the result of the query using comparison operators likewhereEqualTo()
 ,whereLessThan()  ,orderBy() , or   limit()  .
  */
 
+import static com.google.firebase.firestore.Query.Direction.DESCENDING;
+
 import android.net.Uri;
 
 import com.google.firebase.firestore.CollectionReference;
@@ -66,7 +68,15 @@ public final class ChatRepository {
                 .document(chat)
                 .collection(MESSAGE_COLLECTION)
                 .orderBy("dateCreated")
-                .limit(50);
+                .limit(100);
+    }
+
+    public Query getLastChatMessage(String chat){
+        return this.getChatCollection()
+                .document(chat)
+                .collection(MESSAGE_COLLECTION)
+                .orderBy("dateCreated", DESCENDING)
+                .limit(1);
     }
 
     public void createMessage(String textMessage, String chat){
