@@ -22,7 +22,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="@string/tab_title_groups_recent_chats_activity"
-            android:textColor="#B3FFFFFF"
+            android:textColor="@color/colorInactiveWhite"
             android:textSize="14sp"
             android:textStyle="normal" />
 
@@ -35,7 +35,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="@string/tab_title_chats_recent_chats_activity"
-            android:textColor="#B3FFFFFF"
+            android:textColor="@color/colorInactiveWhite"
             android:textSize="14sp"
             android:textStyle="normal" />
 
@@ -48,7 +48,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="@string/tab_title_profile_recent_chats_activity"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorWhite"
             android:textSize="14sp"
             android:textStyle="normal" />
 
@@ -62,7 +62,9 @@
         android:layout_marginEnd="20dp"
         android:layout_weight="0.1"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
 
         <Space
             android:layout_width="30dip"
@@ -112,7 +114,8 @@
                     android:id="@+id/emailTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/default_margin"
+                    android:paddingStart="@dimen/default_margin"
+                    android:paddingEnd="@dimen/default_margin"
                     android:textAlignment="center"
                     android:textSize="@dimen/default_text_size" />
 
@@ -195,20 +198,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
+            android:gravity="bottom|center_horizontal"
             android:orientation="vertical">
 
             <!-- BUTTON UPDATE USERNAME -->
             <Button
                 android:id="@+id/updateButton"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/button_radius_primary_color"
-                android:padding="@dimen/default_margin"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimaryDark"
                 android:text="@string/button_update_account"
-                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
                 android:textSize="@dimen/default_text_size" />
 
             <!-- BUTTON SIGN OUT -->
@@ -217,11 +221,10 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/button_radius_accent_color"
-                android:padding="@dimen/default_margin"
+                android:layout_margin="@dimen/default_text_size_mini"
                 android:text="@string/button_sign_out_account"
-                android:textColor="#fff"
+                android:textAllCaps="true"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="@dimen/default_text_size" />
 
             <!-- BUTTON DELETE ACCOUNT -->
@@ -230,11 +233,10 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/button_radius_error_color"
-                android:padding="@dimen/default_margin"
+                android:layout_margin="@dimen/default_text_size_mini"
                 android:text="@string/button_delete_account"
-                android:textColor="#fff"
+                android:textAllCaps="true"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="@dimen/default_text_size" />
 
         </LinearLayout>

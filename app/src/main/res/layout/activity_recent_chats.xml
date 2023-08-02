@@ -22,7 +22,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="@string/tab_title_groups_recent_chats_activity"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorWhite"
             android:textSize="14sp"
             android:textStyle="normal" />
 
@@ -35,7 +35,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="@string/tab_title_chats_recent_chats_activity"
-            android:textColor="#B3FFFFFF"
+            android:textColor="@color/colorInactiveWhite"
             android:textSize="14sp"
             android:textStyle="normal" />
 
@@ -48,7 +48,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="@string/tab_title_profile_recent_chats_activity"
-            android:textColor="#B3FFFFFF"
+            android:textColor="@color/colorInactiveWhite"
             android:textSize="14sp"
             android:textStyle="normal" />
 
@@ -178,7 +178,6 @@
         android:id="@+id/recyclerViewContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
         <!-- MESSAGE RECYCLER VIEW EMPTY -->

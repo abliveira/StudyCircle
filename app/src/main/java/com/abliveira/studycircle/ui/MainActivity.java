@@ -52,12 +52,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         IdpResponse response = IdpResponse.fromResultIntent(data);
 
         if (requestCode == RC_SIGN_IN) {
-            if (resultCode == RESULT_OK) { // SUCCESS
+            if (resultCode == RESULT_OK) {
                 userManager.createUser();
                 showSnackBar(getString(R.string.connection_succeed));
                 startRecentChatsActivity();
             } else {
-                if (response == null) { // ERRORS
+                if (response == null) {
                     showSnackBar(getString(R.string.error_authentication_canceled));
                 } else if (response.getError()!= null) {
                     if(response.getError().getErrorCode() == ErrorCodes.NO_NETWORK){

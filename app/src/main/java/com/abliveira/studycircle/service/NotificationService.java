@@ -1,4 +1,4 @@
-package com.abliveira.studycircle.notification;
+package com.abliveira.studycircle.service;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -43,7 +43,7 @@ public class NotificationService extends FirebaseMessagingService {
         // Build a Notification object
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
-                        .setSmallIcon(R.drawable.ic_image_notification)
+                        .setSmallIcon(R.drawable.ic_logo_margin) // TODO Check size
                         .setContentTitle(notification.getTitle())
                         .setContentText(notification.getBody())
                         .setAutoCancel(true)

@@ -1,19 +1,15 @@
 package com.abliveira.studycircle.ui.chat;
 
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
-import com.abliveira.studycircle.R;
 import com.abliveira.studycircle.databinding.ItemChatBinding;
 import com.abliveira.studycircle.model.Message;
 
@@ -33,9 +29,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
 
     private ItemChatBinding binding;
 
-//    private final int colorCurrentUser;
-//    private final int colorRemoteUser;
-
     private boolean isSender;
 
     public MessageViewHolder(@NonNull View itemView, boolean isSender) {
@@ -43,9 +36,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         this.isSender = isSender;
         binding = ItemChatBinding.bind(itemView);
 
-//        // Setup default colors
-//        colorCurrentUser = ContextCompat.getColor(itemView.getContext(), R.color.colorAccent);
-//        colorRemoteUser = ContextCompat.getColor(itemView.getContext(), R.color.colorPrimary);
     }
 
     public void updateWithMessage(Message message, RequestManager glide){
@@ -59,7 +49,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
 
         // Update userType
         binding.profileUserType.setVisibility(message.getUserSender().getUserType() ? View.VISIBLE : View.INVISIBLE);
-//        binding.profileContainer.setBackground(message.getUserSender().getUserType() ? null : R.drawable.baseline_circle_24b));
 
         // Update profile picture
         if (message.getUserSender().getUrlPicture() != null)
@@ -81,8 +70,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
 
     private void updateLayoutFromSenderType(){
 
-        //Update Message Bubble Color Background
-//        ((GradientDrawable) binding.messageTextContainer.getBackground()).setColor(isSender ? colorCurrentUser : colorRemoteUser);
         binding.messageTextContainer.requestLayout();
 
         if(!isSender){

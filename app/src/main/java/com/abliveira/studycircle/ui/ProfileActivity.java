@@ -51,10 +51,6 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
             overridePendingTransition(0, 0);
         });
 
-//        binding.userTypeCheckBox.setOnCheckedChangeListener((compoundButton, checked) -> {
-//            userManager.updateUserType(checked);
-//        });
-
         binding.userTypeRequestButton.setOnClickListener(view -> {
             new AlertDialog.Builder(this)
                     .setMessage(R.string.userType_dialog_profile_activity)
@@ -65,8 +61,6 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
                     )
                     .setNegativeButton(R.string.popup_message_choice_no, null)
                     .show();
-//            userManager.updateUserType(!currentUserType);
-//            getUserData();
         });
 
         binding.updateButton.setOnClickListener(view -> {
@@ -114,7 +108,6 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
         userManager.getUserData().addOnSuccessListener(user -> {
             // Set the data with the user information
             String username = TextUtils.isEmpty(user.getUsername()) ? getString(R.string.info_no_username_found) : user.getUsername();
-//            binding.userTypeCheckBox.setChecked(user.getUserType());
             binding.usernameEditText.setText(username);
 
             currentUserType = user.getUserType();
@@ -139,9 +132,4 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
         binding.usernameEditText.setText(username);
         binding.emailTextView.setText(email);
     }
-
-//    private void startRecentChatsActivity(){
-//        Intent intent = new Intent(this, RecentChatsActivity.class);
-//        startActivity(intent);
-//    }
 }

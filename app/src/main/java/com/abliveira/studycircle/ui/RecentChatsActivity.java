@@ -1,8 +1,6 @@
 package com.abliveira.studycircle.ui;
 
-import android.Manifest;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -72,11 +70,11 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
     }
 
     private void configureRecentChats(){
-        TextView chatNamePreview1TextView = (TextView)findViewById(R.id.chatNamePreview1);
+        TextView chatNamePreview1TextView = findViewById(R.id.chatNamePreview1);
         chatNamePreview1TextView.setText(getString(R.string.chat_title_1_recent_chats_activity));
-        TextView chatNamePreview2TextView = (TextView)findViewById(R.id.chatNamePreview2);
+        TextView chatNamePreview2TextView = findViewById(R.id.chatNamePreview2);
         chatNamePreview2TextView.setText(getString(R.string.chat_title_2_recent_chats_activity));
-        TextView chatNamePreview3TextView = (TextView)findViewById(R.id.chatNamePreview3);
+        TextView chatNamePreview3TextView = findViewById(R.id.chatNamePreview3);
         chatNamePreview3TextView.setText(getString(R.string.chat_title_3_recent_chats_activity));
     }
 
@@ -114,7 +112,6 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
         binding.emptyRecyclerView.setVisibility(this.chatAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
     }
 
-    // Launch Chat Activity
     private void startChatActivity(String chatId, String chatName){
         Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra("CHAT_ID", chatId);
@@ -122,10 +119,9 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
         startActivity(intent);
     }
 
-    // Launch Chat Activity
     private void startProfileActivity(){
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
-        overridePendingTransition(0, 0); // TODO Disable transition. Implement it right for all screens
+        overridePendingTransition(0, 0); // Disables transition
     }
 }
