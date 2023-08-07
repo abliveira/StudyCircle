@@ -1,5 +1,6 @@
 package com.abliveira.studycircle.ui;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -73,7 +74,9 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
 
         binding.signOutButton.setOnClickListener(view -> {
             userManager.signOut(this).addOnSuccessListener(aVoid -> {
-                finish();
+//                finish(); // Finish the activity
+//                finishAffinity(); // Finish all activities (Close application)
+                restartApp(); // Restart the application
             });
         });
 
@@ -83,7 +86,9 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
                     .setPositiveButton(R.string.popup_message_choice_yes, (dialogInterface, i) ->
                             userManager.deleteUser(ProfileActivity.this)
                                     .addOnSuccessListener(aVoid -> {
-                                                finish();
+//                                                finish(); // Finish the activity
+//                                                finishAffinity(); // Finish all activities (Close application)
+                                                restartApp(); // Restart the application
                                             }
                                     )
                     )
@@ -131,5 +136,15 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
 
         binding.usernameEditText.setText(username);
         binding.emailTextView.setText(email);
+    }
+
+    private void restartApp() {
+        Intent restartIntent = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        if (restartIntent != null) {
+            restartIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(restartIntent);
+            finish();
+        }
     }
 }
