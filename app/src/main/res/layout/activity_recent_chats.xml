@@ -72,11 +72,12 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/contactImageView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_default_picture_48dp" />
+                android:src="@drawable/ic_default_picture_48dp"
+                app:shapeAppearanceOverlay="@style/circleImageView" />
 
             <TextView
                 android:id="@+id/chatNamePreview1"
@@ -120,11 +121,12 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/contactImageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_default_picture_48dp" />
+                app:srcCompat="@drawable/ic_default_picture_48dp"
+                app:shapeAppearanceOverlay="@style/circleImageView" />
 
             <TextView
                 android:id="@+id/chatNamePreview2"
@@ -168,11 +170,12 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/contactImageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_default_picture_48dp" />
+                app:srcCompat="@drawable/ic_default_picture_48dp"
+                app:shapeAppearanceOverlay="@style/circleImageView" />
 
             <TextView
                 android:id="@+id/chatNamePreview3"

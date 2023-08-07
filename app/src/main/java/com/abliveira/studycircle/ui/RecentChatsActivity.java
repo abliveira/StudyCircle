@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -144,6 +145,17 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
                 System.out.println("Invalid index or no chat preview found.");
             }
         }
+
+        // After initializing the profileImage ImageView, apply the rounded shape programmatically:
+        ImageView contactImage1 = findViewById(R.id.contactImageView1);
+        contactImage1.setImageResource(R.mipmap.ic_sample_circuits); // Replace "my_image" with your actual resource ID
+
+        ImageView contactImage2 = findViewById(R.id.contactImageView2);
+        contactImage2.setImageResource(R.mipmap.ic_sample_book); // Replace "my_image" with your actual resource ID
+
+        ImageView contactImage3 = findViewById(R.id.contactImageView3);
+        contactImage3.setImageResource(R.mipmap.ic_sample_engineering); // Replace "my_image" with your actual resource ID
+
     }
 
     private void startChatActivity(String chatId, String chatName){
