@@ -1,48 +1,48 @@
 package com.abliveira.studycircle.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.abliveira.studycircle.R;
 import com.abliveira.studycircle.databinding.ActivityRecentChatsBinding;
-import com.abliveira.studycircle.manager.ChatManager;
-import com.abliveira.studycircle.manager.UserManager;
-import com.abliveira.studycircle.model.Message;
-import com.abliveira.studycircle.ui.chat.ChatAdapter;
-import com.bumptech.glide.Glide;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.Query;
+import com.abliveira.studycircle.manager.RecentChatsManager;
+import com.abliveira.studycircle.repository.RecentChatsRepository;
 
-public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding> implements ChatAdapter.Listener {
-
-    private ChatAdapter chatAdapter;
-    private String currentChatName;
+public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding> {
 
     private static final String CHAT_NAME_1 = "chat1";
     private static final String CHAT_NAME_2 = "chat2";
     private static final String CHAT_NAME_3 = "chat3";
 
-    private UserManager userManager = UserManager.getInstance();
-    private ChatManager chatManager = ChatManager.getInstance();
-
     @Override
     protected ActivityRecentChatsBinding getViewBinding() {
+        System.out.println("ActivityRecentChatsBinding begin");
         return ActivityRecentChatsBinding.inflate(getLayoutInflater());
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("OnCreate");
         getSupportActionBar().setElevation(0);
-        configureRecentChats();
-        configureRecyclerView(CHAT_NAME_1);
+        // Register the local broadcast receiver
+        LocalBroadcastManager.getInstance(this).registerReceiver(chatPreviewSetReceiver, new IntentFilter(RecentChatsRepository.ACTION_CHAT_PREVIEW_SET));
         setupListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("onResume");
+        getMessagePreviews();
+        configureRecentChats();
     }
 
     @Override
@@ -50,6 +50,26 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
         super.onBackPressed();
         finishAffinity(); // or finish();
     }
+
+    @Override
+    protected void onDestroy() {
+        // Unregister the local broadcast receiver when the activity is destroyed
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(chatPreviewSetReceiver);
+        super.onDestroy();
+    }
+
+    private BroadcastReceiver chatPreviewSetReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(RecentChatsRepository.ACTION_CHAT_PREVIEW_SET)) {
+                // Handle the broadcast message here
+                // You can update your UI or perform any other actions based on the broadcast
+                // For example, you can trigger a refresh of the chat preview UI
+                System.out.println("RecentChatsActivity BroadcastReceiver received");
+                configureRecentChats();
+            }
+        }
+    };
 
     private void setupListeners(){
 
@@ -69,47 +89,61 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
         });
     }
 
-    private void configureRecentChats(){
-        TextView chatNamePreview1TextView = findViewById(R.id.chatNamePreview1);
-        chatNamePreview1TextView.setText(getString(R.string.chat_title_1_recent_chats_activity));
-        TextView chatNamePreview2TextView = findViewById(R.id.chatNamePreview2);
-        chatNamePreview2TextView.setText(getString(R.string.chat_title_2_recent_chats_activity));
-        TextView chatNamePreview3TextView = findViewById(R.id.chatNamePreview3);
-        chatNamePreview3TextView.setText(getString(R.string.chat_title_3_recent_chats_activity));
+    private void getMessagePreviews(){
+
+//        System.out.println("getMessagePreviews" + chatName);
+        RecentChatsRepository recentChatsRepository = new RecentChatsRepository();
+
+        // Call the getLastChatMessage() method and pass the chat ID
+        recentChatsRepository.getLastChatMessage(CHAT_NAME_1);
+        recentChatsRepository.getLastChatMessage(CHAT_NAME_2);
+        recentChatsRepository.getLastChatMessage(CHAT_NAME_3);
+
     }
 
-    // Configure RecyclerView
-    private void configureRecyclerView(String chatName){
-        //Track current chat name
-        this.currentChatName = chatName;
-        //Configure Adapter & RecyclerView
-        this.chatAdapter = new ChatAdapter(
-                generateOptionsForAdapter(chatManager.getLastChatMessage(this.currentChatName)),
-                Glide.with(this), this);
+    private void configureRecentChats() {
+        System.out.println("configureRecentChats");
 
-        chatAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-            @Override
-            public void onItemRangeInserted(int positionStart, int itemCount) {
-                binding.chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()); // Scroll to bottom on new messages
+        RecentChatsManager recentChatsManager = RecentChatsManager.getInstance();
+
+        // Define an array of chat preview resource IDs and an array of chat titles
+        int[] chatPreviewIds = {
+                R.id.chatMessagePreview1,
+                R.id.chatMessagePreview2,
+                R.id.chatMessagePreview3
+        };
+
+        int[] chatNameIds = {
+                R.id.chatNamePreview1,
+                R.id.chatNamePreview2,
+                R.id.chatNamePreview3
+        };
+
+        String[] chatTitles = {
+                getString(R.string.chat_title_1_recent_chats_activity),
+                getString(R.string.chat_title_2_recent_chats_activity),
+                getString(R.string.chat_title_3_recent_chats_activity)
+        };
+
+        for (int i = 0; i < chatPreviewIds.length; i++) {
+            // Find the chat preview TextView using its resource ID
+            TextView chatPreviewTextView = findViewById(chatPreviewIds[i]);
+
+            // Find the chat name TextView using its resource ID
+            TextView chatNameTextView = findViewById(chatNameIds[i]);
+
+            // Set the chat title
+            chatNameTextView.setText(chatTitles[i]);
+
+            // Get the chat preview for the current index from the RecentChatsManager
+            String selectedPreview = recentChatsManager.getChatPreview(i + 1);
+            if (selectedPreview != null) {
+                chatPreviewTextView.setText(selectedPreview);
+                System.out.println(selectedPreview);
+            } else {
+                System.out.println("Invalid index or no chat preview found.");
             }
-        });
-
-        binding.chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.chatRecyclerView.setAdapter(this.chatAdapter);
-    }
-
-    // Create options for RecyclerView from a Query
-    private FirestoreRecyclerOptions<Message> generateOptionsForAdapter(Query query){
-        return new FirestoreRecyclerOptions.Builder<Message>()
-                .setQuery(query, Message.class)
-                .setLifecycleOwner(this)
-                .build();
-    }
-
-    @Override
-    public void onDataChanged() {
-        // Show TextView in case RecyclerView is empty
-        binding.emptyRecyclerView.setVisibility(this.chatAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+        }
     }
 
     private void startChatActivity(String chatId, String chatName){

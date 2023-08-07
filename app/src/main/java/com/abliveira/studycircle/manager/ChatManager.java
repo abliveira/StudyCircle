@@ -35,10 +35,6 @@ public class ChatManager {
         return chatRepository.getChatMessages(chat);
     }
 
-    public Query getLastChatMessage(String chat){
-        return chatRepository.getLastChatMessage(chat);
-    }
-
     public void createMessage(String message, String chat){
         chatRepository.createMessage(message, chat);
     }

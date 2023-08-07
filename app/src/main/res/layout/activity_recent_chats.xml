@@ -87,6 +87,18 @@
                 android:text=""
                 android:textColor="#000000"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/chatMessagePreview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chatNamePreview1"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/contactImageView1"
+                android:text=""
+                android:textColor="@color/colorMidGrey"
+                android:textSize="12sp" />
+
         </RelativeLayout>
 
         <View
@@ -123,6 +135,18 @@
                 android:text=""
                 android:textColor="#000000"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/chatMessagePreview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chatNamePreview2"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/contactImageView2"
+                android:text=""
+                android:textColor="@color/colorMidGrey"
+                android:textSize="12sp" />
+
         </RelativeLayout>
 
         <View
@@ -160,6 +184,17 @@
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/chatMessagePreview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chatNamePreview3"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/contactImageView3"
+                android:text=""
+                android:textColor="@color/colorMidGrey"
+                android:textSize="12sp" />
+
         </RelativeLayout>
 
         <View
@@ -170,33 +205,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="45dp"
             android:background="@color/colorLightGrey" />
-
-    </LinearLayout>
-
-    <!-- RECYCLER VIEW CONTAINER -->
-    <LinearLayout
-        android:id="@+id/recyclerViewContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <!-- MESSAGE RECYCLER VIEW EMPTY -->
-        <TextView
-            android:id="@+id/emptyRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_large_margin"
-            android:layout_marginTop="@dimen/default_large_margin"
-            android:layout_marginEnd="@dimen/default_large_margin"
-            android:layout_marginBottom="@dimen/default_large_margin"
-            android:text="Recent_Chats_Activity"
-            android:textAlignment="center" />
-
-        <!-- RECYCLER VIEW -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/chatRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
 

@@ -71,14 +71,6 @@ public final class ChatRepository {
                 .limit(100);
     }
 
-    public Query getLastChatMessage(String chat){
-        return this.getChatCollection()
-                .document(chat)
-                .collection(MESSAGE_COLLECTION)
-                .orderBy("dateCreated", DESCENDING)
-                .limit(1);
-    }
-
     public void createMessage(String textMessage, String chat){
 
         userManager.getUserData().addOnSuccessListener(user -> {
