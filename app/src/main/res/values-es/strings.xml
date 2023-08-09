@@ -1,0 +1,47 @@
+<resources>
+
+    <string name="login">Iniciar sesión</string>
+    <string name="welcome_message_main_activity">¡Bienvenido!</string>
+    <string name="help_message_main_activity">Inicia sesión para continuar</string>
+
+    <!-- SERVICIO DE NOTIFICACIÓN -->
+    <string name="notification_title">Tienes una nueva notificación</string>
+
+    <!-- ACTIVIDAD PRINCIPAL -->
+    <string name="error_authentication_canceled">Autenticación cancelada&#8230;</string>
+    <string name="error_no_internet">No hay conexión a internet</string>
+    <string name="error_unknown_error">Ha ocurrido un error&#8230;</string>
+    <string name="connection_succeed">¡Autenticación exitosa!</string>
+
+    <!-- ACTIVIDAD DE INICIO DE SESIÓN -->
+    <string name="text_input_username">Nombre de usuario</string>
+    <string name="button_update_account">Guardar</string>
+    <string name="button_delete_account">Eliminar cuenta</string>
+    <string name="button_sign_out_account">Cerrar sesión</string>
+    <string name="info_no_email_found">Email no encontrado</string>
+    <string name="info_no_username_found">Nombre de usuario no encontrado</string>
+    <string name="popup_message_confirmation_delete_account">¿Realmente quieres eliminar tu cuenta?</string>
+    <string name="popup_message_choice_yes">Sí</string>
+    <string name="popup_message_choice_no">No</string>
+
+    <!-- ACTIVIDAD DE CHATS RECIENTES -->
+    <string name="tab_title_groups_recent_chats_activity">Grupos</string>
+    <string name="tab_title_chats_recent_chats_activity">Chats</string>
+    <string name="tab_title_profile_recent_chats_activity">Perfil</string>
+
+    <!-- ACTIVIDAD DE CHAT -->
+    <string name="toolbar_title_chat_activity">Sala de Chat</string>
+    <string name="text_input_title_chat_activity">Escribe un mensaje</string>
+    <string name="text_view_chat_error">No hay mensajes en esta conversación&#8230;</string>
+    <string name="popup_title_permission_files_access">Para adjuntar una foto, StudyCircle requiere permisos adicionales.</string>
+    <string name="toast_title_no_image_chosen">Ninguna imagen seleccionada&#8230;</string>
+
+    <!-- ACTIVIDAD DE PERFIL -->
+    <string name="userName_hint_profile_activity">Nombre</string>
+    <string name="userType_hint_profile_activity">Tipo de Perfil</string>
+    <string name="userType_student_profile_activity">Estudiante</string>
+    <string name="userType_professor_profile_activity">Profesor</string>
+    <string name="userType_request_profile_activity">Solicitar Cambio</string>
+    <string name="userType_dialog_profile_activity">¿Quieres cambiar tu tipo de perfil?</string>
+
+</resources>
