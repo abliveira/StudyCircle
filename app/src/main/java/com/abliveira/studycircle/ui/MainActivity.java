@@ -82,7 +82,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.GoogleBuilder().build(),
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
         startActivityForResult(
