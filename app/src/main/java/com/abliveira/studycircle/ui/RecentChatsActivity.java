@@ -63,10 +63,7 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(RecentChatsRepository.ACTION_CHAT_PREVIEW_SET)) {
-                // Handle the broadcast message here
-                // You can update your UI or perform any other actions based on the broadcast
-                // For example, you can trigger a refresh of the chat preview UI
-                System.out.println("RecentChatsActivity BroadcastReceiver received");
+                System.out.println("RecentChatsActivity: Broadcast received from RecentChatsRepository");
                 configureRecentChats();
             }
         }
@@ -74,7 +71,6 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
 
     private void setupListeners(){
 
-        // Chat buttons
         binding.chatPreview1.setOnClickListener(view -> {
             startChatActivity(CHAT_NAME_1, getString(R.string.chat_title_1_recent_chats_activity));
         });
@@ -92,18 +88,16 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
 
     private void getMessagePreviews(){
 
-//        System.out.println("getMessagePreviews" + chatName);
         RecentChatsRepository recentChatsRepository = new RecentChatsRepository();
 
-        // Call the getLastChatMessage() method and pass the chat ID
         recentChatsRepository.getLastChatMessage(CHAT_NAME_1);
         recentChatsRepository.getLastChatMessage(CHAT_NAME_2);
         recentChatsRepository.getLastChatMessage(CHAT_NAME_3);
-
     }
 
     private void configureRecentChats() {
-        System.out.println("configureRecentChats");
+
+        System.out.println("RecentChatsActivity: configureRecentChats");
 
         RecentChatsManager recentChatsManager = RecentChatsManager.getInstance();
 
@@ -127,6 +121,7 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
         };
 
         for (int i = 0; i < chatPreviewIds.length; i++) {
+
             // Find the chat preview TextView using its resource ID
             TextView chatPreviewTextView = findViewById(chatPreviewIds[i]);
 

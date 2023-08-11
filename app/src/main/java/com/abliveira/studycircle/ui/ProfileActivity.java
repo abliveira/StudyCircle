@@ -45,6 +45,7 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
     of type Task, which allows these calls to be made asynchronously.
 
     These Tasks have several Callback methods to check if and when they end correctly. */
+
     private void setupListeners(){
 
         binding.groupChatsButton.setOnClickListener(view -> {

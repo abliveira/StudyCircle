@@ -64,11 +64,8 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
     }
 
     private void setupListeners(){
-
-        // Send button
         binding.sendButton.setOnClickListener(view -> { sendMessage(); });
         binding.addFileButton.setOnClickListener(view -> { addFile(); });
-
     }
 
     @Override
@@ -104,9 +101,9 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
 
     // Configure RecyclerView
     private void configureRecyclerView(String chatName){
-        //Track current chat name
+        // Track current chat name
         this.currentChatName = chatName;
-        //Configure Adapter & RecyclerView
+        // Configure Adapter & RecyclerView
         this.chatAdapter = new ChatAdapter(
                 generateOptionsForAdapter(chatManager.getChatMessages(this.currentChatName)),
                 Glide.with(this), this);
@@ -139,7 +136,6 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
             }
             // Reset text field
             binding.chatEditText.setText("");
-
         }
     }
 

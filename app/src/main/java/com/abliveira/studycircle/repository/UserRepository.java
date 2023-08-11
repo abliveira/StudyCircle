@@ -80,13 +80,12 @@ public final class UserRepository {
         }
     }
 
-
     // Get User Data from Firestore
     public Task<DocumentSnapshot> getUserData(){
         String uid = this.getCurrentUserUID();
         if(uid != null){
             return this.getUsersCollection().document(uid).get();
-        }else{
+        } else{
             return null;
         }
     }
@@ -96,7 +95,7 @@ public final class UserRepository {
         String uid = this.getCurrentUserUID();
         if(uid != null){
             return this.getUsersCollection().document(uid).update(USERNAME_FIELD, username);
-        }else{
+        } else{
             return null;
         }
     }

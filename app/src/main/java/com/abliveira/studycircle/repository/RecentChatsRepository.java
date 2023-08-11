@@ -74,7 +74,7 @@ public class RecentChatsRepository {
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
                 } else {
-                    System.out.println("Document not found.");
+                    System.out.println("RecentChatsRepository: Document not found.");
                 }
             }
         });
@@ -86,7 +86,7 @@ public class RecentChatsRepository {
 
     private Query getLastChatMessageQuery(String chatId, String chatCollection, String messageCollection) {
 
-        System.out.println("RecentChatsRepository getLastChatMessageQuery: " + chatId);
+        System.out.println("RecentChatsRepository: getLastChatMessageQuery: " + chatId);
 
         return this.getChatCollection(chatCollection)
                 .document(chatId)

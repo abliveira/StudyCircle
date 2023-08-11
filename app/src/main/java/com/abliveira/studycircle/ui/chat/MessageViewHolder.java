@@ -35,7 +35,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         this.isSender = isSender;
         binding = ItemChatBinding.bind(itemView);
-
     }
 
     public void updateWithMessage(Message message, RequestManager glide){
@@ -104,12 +103,10 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         LinearLayout.LayoutParams dateLayoutParams = (LinearLayout.LayoutParams) binding.dateTextView.getLayoutParams();
         dateLayoutParams.gravity = Gravity.BOTTOM | Gravity.START;
         binding.dateTextView.requestLayout();
-
     }
 
     private String convertDateToHour(Date date){
         DateFormat dfTime = new SimpleDateFormat("HH:mm", Locale.getDefault());
         return dfTime.format(date);
     }
-
 }
