@@ -25,7 +25,6 @@ public class NotificationService extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         if (remoteMessage.getNotification() != null) {
-            // Get message sent by Firebase
             RemoteMessage.Notification notification = remoteMessage.getNotification();
             sendVisualNotification(notification);
         }
@@ -33,14 +32,11 @@ public class NotificationService extends FirebaseMessagingService {
 
     private void sendVisualNotification(RemoteMessage.Notification notification) {
 
-        // Create an Intent that will be shown when user will click on the Notification
         Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        // Create a Channel (Android 8)
         String channelId = getString(R.string.default_notification_channel_id);
 
-        // Build a Notification object
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.ic_logo_margin) // TODO Check size
@@ -60,7 +56,6 @@ public class NotificationService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(mChannel);
         }
 
-        // Show notification
         notificationManager.notify(NOTIFICATION_TAG, NOTIFICATION_ID, notificationBuilder.build());
     }
 }

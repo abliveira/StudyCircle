@@ -24,14 +24,12 @@ public class Message {
         this.userSender = userSender;
     }
 
-    // --- GETTERS ---
     public String getMessage() { return message; }
     @ServerTimestamp
     public Date getDateCreated() { return dateCreated; }
     public User getUserSender() { return userSender; }
     public String getUrlImage() { return urlImage; }
 
-    // --- SETTERS ---
     public void setMessage(String message) { this.message = message; }
     public void setDateCreated(Date dateCreated) { this.dateCreated = dateCreated; }
     public void setUserSender(User userSender) { this.userSender = userSender; }

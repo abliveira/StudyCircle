@@ -33,7 +33,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         if(userManager.isCurrentUserLogged()){
             startRecentChatsActivity();}
         setupListeners();
-//        throw new RuntimeException("Test Crash"); // Keep commented. Generates a test crash
     }
 
     @Override
@@ -86,7 +85,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 new AuthUI.IdpConfig.GoogleBuilder().build(),
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
-        // Launch the activity
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()

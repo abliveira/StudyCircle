@@ -1,16 +1,5 @@
 package com.abliveira.studycircle.manager;
 
-/* Manager
-        The manager will take care of processing and formatting the data, if necessary.
-        It will therefore call the Repository to retrieve the data and then process it
-         so that it is in a format our Views can use.
-        This is one way of doing things among many others, I invite you to go deeper
-         into the subject of patterns and the architecture of a mobile application if you wish.
-
-         For simplicity, these classes will be singletons.
-
- */
-
 import android.content.Context;
 
 import com.google.android.gms.tasks.Task;
@@ -57,7 +46,6 @@ public class UserManager {
     }
 
     public Task<User> getUserData(){
-        // Get the user from Firestore and cast it to a User model Object
         return userRepository.getUserData().continueWith(task -> task.getResult().toObject(User.class)) ;
     }
 
@@ -70,9 +58,7 @@ public class UserManager {
     }
 
     public Task<Void> deleteUser(Context context){
-        // Delete the user account from the Auth
         return userRepository.deleteUser(context).addOnCompleteListener(task -> {
-            // Once done, delete the user data from Firestore
             userRepository.deleteUserFromFirestore();
         });
     }

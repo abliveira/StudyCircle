@@ -33,7 +33,6 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
         super.onCreate(savedInstanceState);
         System.out.println("OnCreate");
         getSupportActionBar().setElevation(0);
-        // Register the local broadcast receiver
         LocalBroadcastManager.getInstance(this).registerReceiver(chatPreviewSetReceiver, new IntentFilter(RecentChatsRepository.ACTION_CHAT_PREVIEW_SET));
         setupListeners();
     }
@@ -54,7 +53,6 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
 
     @Override
     protected void onDestroy() {
-        // Unregister the local broadcast receiver when the activity is destroyed
         LocalBroadcastManager.getInstance(this).unregisterReceiver(chatPreviewSetReceiver);
         super.onDestroy();
     }
@@ -101,7 +99,6 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
 
         RecentChatsManager recentChatsManager = RecentChatsManager.getInstance();
 
-        // Define an array of chat preview resource IDs and an array of chat titles
         int[] chatPreviewIds = {
                 R.id.chatMessagePreview1,
                 R.id.chatMessagePreview2,
@@ -122,16 +119,9 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
 
         for (int i = 0; i < chatPreviewIds.length; i++) {
 
-            // Find the chat preview TextView using its resource ID
             TextView chatPreviewTextView = findViewById(chatPreviewIds[i]);
-
-            // Find the chat name TextView using its resource ID
             TextView chatNameTextView = findViewById(chatNameIds[i]);
-
-            // Set the chat title
             chatNameTextView.setText(chatTitles[i]);
-
-            // Get the chat preview for the current index from the RecentChatsManager
             String selectedPreview = recentChatsManager.getChatPreview(i + 1);
             if (selectedPreview != null) {
                 chatPreviewTextView.setText(selectedPreview);
@@ -140,16 +130,14 @@ public class RecentChatsActivity extends BaseActivity<ActivityRecentChatsBinding
                 System.out.println("Invalid index or no chat preview found.");
             }
         }
-
-        // After initializing the profileImage ImageView, apply the rounded shape programmatically:
         ImageView contactImage1 = findViewById(R.id.contactImageView1);
-        contactImage1.setImageResource(R.mipmap.ic_sample_circuits); // Replace "my_image" with your actual resource ID
+        contactImage1.setImageResource(R.mipmap.ic_sample_circuits);
 
         ImageView contactImage2 = findViewById(R.id.contactImageView2);
-        contactImage2.setImageResource(R.mipmap.ic_sample_book); // Replace "my_image" with your actual resource ID
+        contactImage2.setImageResource(R.mipmap.ic_sample_book);
 
         ImageView contactImage3 = findViewById(R.id.contactImageView3);
-        contactImage3.setImageResource(R.mipmap.ic_sample_engineering); // Replace "my_image" with your actual resource ID
+        contactImage3.setImageResource(R.mipmap.ic_sample_engineering);
 
     }
 

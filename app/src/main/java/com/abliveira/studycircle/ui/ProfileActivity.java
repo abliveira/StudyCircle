@@ -40,12 +40,6 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
         overridePendingTransition(0, 0);
     }
 
-    /* These methods use the Singleton object  AuthUI.getInstance() from the FirebaseUI library.
-    The latter has several methods, including  signOut() and  delete(), which both return an object
-    of type Task, which allows these calls to be made asynchronously.
-
-    These Tasks have several Callback methods to check if and when they end correctly. */
-
     private void setupListeners(){
 
         binding.groupChatsButton.setOnClickListener(view -> {
@@ -112,7 +106,6 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
 
     private void getUserData(){
         userManager.getUserData().addOnSuccessListener(user -> {
-            // Set the data with the user information
             String username = TextUtils.isEmpty(user.getUsername()) ? getString(R.string.info_no_username_found) : user.getUsername();
             binding.usernameEditText.setText(username);
 

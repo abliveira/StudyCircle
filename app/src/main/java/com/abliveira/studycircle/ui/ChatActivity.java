@@ -84,12 +84,11 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
         startActivityForResult(i, RC_CHOOSE_PHOTO);
     }
 
-    // Handle activity response (after user has chosen or not a picture)
     private void handleResponse(int requestCode, int resultCode, Intent data){
         if (requestCode == RC_CHOOSE_PHOTO) {
             if (resultCode == RESULT_OK) { //SUCCESS
                 this.uriImageSelected = data.getData();
-                Glide.with(this) //SHOWING PREVIEW OF IMAGE
+                Glide.with(this)
                         .load(this.uriImageSelected)
                         .apply(RequestOptions.circleCropTransform())
                         .into(binding.imagePreview);
@@ -101,9 +100,7 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
 
     // Configure RecyclerView
     private void configureRecyclerView(String chatName){
-        // Track current chat name
         this.currentChatName = chatName;
-        // Configure Adapter & RecyclerView
         this.chatAdapter = new ChatAdapter(
                 generateOptionsForAdapter(chatManager.getChatMessages(this.currentChatName)),
                 Glide.with(this), this);
@@ -111,7 +108,7 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
         chatAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {
-                binding.chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()); // Scroll to bottom on new messages
+                binding.chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount());
             }
         });
 
@@ -120,26 +117,20 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
     }
 
     private void sendMessage(){
-        // Check if user can send a message (Text not null + user logged)
         boolean canSendMessage = !TextUtils.isEmpty(binding.chatEditText.getText()) && userManager.isCurrentUserLogged();
 
         if (canSendMessage){
             String messageText = binding.chatEditText.getText().toString();
-            // Check if there is an image to add with the message
             if(binding.imagePreview.getDrawable() == null){
-                // Create a new message for the chat
                 chatManager.createMessage(messageText, this.currentChatName);
             }else {
-                // Create a new message with an image for the chat
                 chatManager.sendMessageWithImage(messageText, this.uriImageSelected, this.currentChatName);
                 binding.imagePreview.setImageDrawable(null);
             }
-            // Reset text field
             binding.chatEditText.setText("");
         }
     }
 
-    // Create options for RecyclerView from a Query
     private FirestoreRecyclerOptions<Message> generateOptionsForAdapter(Query query){
         return new FirestoreRecyclerOptions.Builder<Message>()
                 .setQuery(query, Message.class)
@@ -149,7 +140,6 @@ public class ChatActivity extends BaseActivity<ActivityChatBinding> implements C
 
     @Override
     public void onDataChanged() {
-        // Show TextView in case RecyclerView is empty
         binding.emptyRecyclerView.setVisibility(this.chatAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
     }
 }

@@ -37,38 +37,30 @@ public class RecentChatsRepository {
 
                 if (!querySnapshot.isEmpty()) {
 
-                    // Get the first document from the QuerySnapshot
                     DocumentSnapshot document = querySnapshot.getDocuments().get(0);
 
-                    // Get and print the fields from the document
                     String message = document.getString("message");
                     String sender = document.getString("sender");
-//                    long dateCreated = document.getLong("dateCreated");
 
-                    // Print the fields
                     System.out.print("ChatID: " + chatId + ", ");
                     System.out.print("Message: " + message + ", ");
                     System.out.println("Sender: " + sender);
 
                     String regex = "\\d+";
 
-                    // Use Pattern and Matcher to find the numeric part
                     Pattern pattern = Pattern.compile(regex);
                     Matcher matcher = pattern.matcher(chatId);
 
                     int chatNumber = 0;
 
-                    // Check if there is a match and extract the numeric part
                     if (matcher.find()) {
                         String numberStr = matcher.group();
-                            // Parse the numeric part to an integer
                             chatNumber = Integer.parseInt(numberStr);
                     }
 
                     RecentChatsManager chatManager = RecentChatsManager.getInstance();
                     chatManager.setChatPreview(chatNumber, message);
 
-                    // Send a local broadcast to notify RecentChatsActivity that chat preview is set
                     Intent intent = new Intent(ACTION_CHAT_PREVIEW_SET);
                     Context context = null;
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);

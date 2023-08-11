@@ -13,12 +13,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.abliveira.studycircle.model.User;
 
-/*
-The FirebaseUI library provides us with a very   FirebaseAuth.getInstance() practical Singleton object,
-        containing a method allowing us to retrieve the user currently connected to our application
-        (getCurrentUser() ) which returns an object of type FirebaseUser .
- */
-
 public final class UserRepository {
 
     private static volatile UserRepository instance;
@@ -47,19 +41,16 @@ public final class UserRepository {
         return FirebaseAuth.getInstance().getCurrentUser();
     }
 
-    // Get current User UID, if we have a current user
     @Nullable
     public String getCurrentUserUID() {
         FirebaseUser currentUser = getCurrentUser();
         return (currentUser != null) ? currentUser.getUid() : null;
     }
 
-    // Get the Collection Reference
     private CollectionReference getUsersCollection(){
         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
     }
 
-    // Create User in Firestore
     public void createUser() {
         FirebaseUser user = getCurrentUser();
         if(user != null){
@@ -70,7 +61,6 @@ public final class UserRepository {
             User userToCreate = new User(uid, username, urlPicture);
 
             Task<DocumentSnapshot> userData = getUserData();
-            // If the user already exist in Firestore, we get his data (userType)
             userData.addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.contains(USER_TYPE_FIELD)){
                     userToCreate.setUserType((Boolean) documentSnapshot.get(USER_TYPE_FIELD));
@@ -80,7 +70,6 @@ public final class UserRepository {
         }
     }
 
-    // Get User Data from Firestore
     public Task<DocumentSnapshot> getUserData(){
         String uid = this.getCurrentUserUID();
         if(uid != null){
@@ -90,7 +79,6 @@ public final class UserRepository {
         }
     }
 
-    // Update User Username
     public Task<Void> updateUsername(String username) {
         String uid = this.getCurrentUserUID();
         if(uid != null){
@@ -100,7 +88,6 @@ public final class UserRepository {
         }
     }
 
-    // Update UserType
     public void updateUserType(Boolean userType) {
         String uid = this.getCurrentUserUID();
         if(uid != null){
@@ -108,7 +95,6 @@ public final class UserRepository {
         }
     }
 
-    // Delete the User from Firestore
     public void deleteUserFromFirestore() {
         String uid = this.getCurrentUserUID();
         if(uid != null){

@@ -5,10 +5,6 @@ import android.net.Uri;
 import com.google.firebase.firestore.Query;
 import com.abliveira.studycircle.repository.ChatRepository;
 
-/*
-Nothing special in this class: we have a function getChatCollection().
-It uses our repository to retrieve messages.
- */
 public class ChatManager {
 
     private static volatile ChatManager instance;

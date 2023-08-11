@@ -10,7 +10,6 @@ public class RecentChatsManager {
     private static final int MAX_PREVIEWS = 3;
 
     private RecentChatsManager() {
-        // Private constructor to prevent direct instantiation.
         chatPreviews = new ArrayList<>();
     }
 
@@ -23,7 +22,7 @@ public class RecentChatsManager {
 
     public void addChatPreview(String preview) {
         if (chatPreviews.size() >= MAX_PREVIEWS) {
-            chatPreviews.remove(0); // Remove the oldest preview when the list is full
+            chatPreviews.remove(0);
         }
         chatPreviews.add(preview);
     }
@@ -31,7 +30,7 @@ public class RecentChatsManager {
     public void setChatPreview(int index, String preview) {
         if (index >= 0) {
             while (index >= chatPreviews.size()) {
-                chatPreviews.add(null); // Increase the list size to match the index
+                chatPreviews.add(null);
             }
             chatPreviews.set(index, truncateString(preview));
         } else {

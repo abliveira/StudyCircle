@@ -18,13 +18,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/*
-This ViewHolder represents each line in the RecyclerView, and each message (visually).
-Go ahead and check out the corresponding layout so you can absorb it and understand
-the visual logic. To sum it up, we have the method  updateWithMessage() , which will
-update the various views from ViewHolder based on a message object passed as a parameter.
- */
-
 public class MessageViewHolder extends RecyclerView.ViewHolder {
 
     private ItemChatBinding binding;
@@ -39,23 +32,18 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
 
     public void updateWithMessage(Message message, RequestManager glide){
 
-        // Update message
         binding.messageTextView.setText(message.getMessage());
         binding.messageTextView.setTextAlignment(isSender ? View.TEXT_ALIGNMENT_TEXT_END : View.TEXT_ALIGNMENT_TEXT_START);
 
-        // Update date
         if (message.getDateCreated() != null) binding.dateTextView.setText(this.convertDateToHour(message.getDateCreated()));
 
-        // Update userType
         binding.profileUserType.setVisibility(message.getUserSender().getUserType() ? View.VISIBLE : View.INVISIBLE);
 
-        // Update profile picture
         if (message.getUserSender().getUrlPicture() != null)
             glide.load(message.getUserSender().getUrlPicture())
                     .apply(RequestOptions.circleCropTransform())
                     .into(binding.profileImage);
 
-        // Update image sent
         if (message.getUrlImage() != null){
             glide.load(message.getUrlImage())
                     .into(binding.senderImageView);
@@ -78,7 +66,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void updateProfileContainer(){
-        // Update the constraint for the profile container (Push it to the left for receiver message)
         ConstraintLayout.LayoutParams profileContainerLayoutParams = (ConstraintLayout.LayoutParams) binding.profileContainer.getLayoutParams();
         profileContainerLayoutParams.endToEnd = ConstraintLayout.LayoutParams.UNSET;
         profileContainerLayoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
@@ -86,7 +73,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void updateMessageContainer(){
-        // Update the constraint for the message container (Push it to the right of the profile container for receiver message)
         ConstraintLayout.LayoutParams messageContainerLayoutParams = (ConstraintLayout.LayoutParams) binding.messageContainer.getLayoutParams();
         messageContainerLayoutParams.startToStart = ConstraintLayout.LayoutParams.UNSET;
         messageContainerLayoutParams.endToStart = ConstraintLayout.LayoutParams.UNSET;
@@ -95,7 +81,6 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         messageContainerLayoutParams.horizontalBias = 0.0f;
         binding.messageContainer.requestLayout();
 
-        // Update the constraint (gravity) for the text of the message (content + date) (Align it to the left for receiver message)
         LinearLayout.LayoutParams messageTextLayoutParams = (LinearLayout.LayoutParams) binding.messageTextContainer.getLayoutParams();
         messageTextLayoutParams.gravity = Gravity.START;
         binding.messageTextContainer.requestLayout();
