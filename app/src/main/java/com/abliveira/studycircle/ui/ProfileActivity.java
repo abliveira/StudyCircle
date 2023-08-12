@@ -6,15 +6,20 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.abliveira.studycircle.R;
 import com.abliveira.studycircle.databinding.ActivityProfileBinding;
 import com.abliveira.studycircle.manager.UserManager;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
 
@@ -101,10 +106,13 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
     private void updateUIWithUserData(){
         if(userManager.isCurrentUserLogged()){
             FirebaseUser user = userManager.getCurrentUser();
-
+            System.out.println("updateUIWithUserData isCurrentUserLogged");
             if(user.getPhotoUrl() != null){
+                System.out.println("updateUIWithUserData getPhotoUrl() != null");
                 setProfilePicture(user.getPhotoUrl());
+                System.out.println(user.getPhotoUrl());
             }
+//            setProfilePictureHardcoded();
             setTextUserData(user);
             getUserData();
         }
@@ -128,6 +136,30 @@ public class ProfileActivity extends BaseActivity<ActivityProfileBinding> {
                 .load(profilePictureUrl)
                 .apply(RequestOptions.circleCropTransform())
                 .into(binding.profileImageView);
+    }
+
+    private void setProfilePictureHardcoded(){
+
+        /* This code is used for setting the current user profile picture,
+        registered on Firebase Authentification.
+        TODO Change this code for allow the user changing his own picture on app
+         */
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setPhotoUri(Uri.parse("INSERT FIREBASE PIC URL HERE"))
+                .build();
+
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            System.out.println("User profile updated.");
+                        }
+                    }
+                });
     }
 
     private void setTextUserData(FirebaseUser user){
