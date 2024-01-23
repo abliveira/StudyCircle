@@ -4,7 +4,7 @@
 
 ### Compiled and Tested With:
 
-- **IDE:** Android Studio Iguana Canary 15
+- **IDE:** Android Studio Iguana Beta 2
 - **Android Gradle Plugin Version:** 7.1.3
 - **Gradle Version:** 7.2
 - **Gradle JDK:** jbr-17 (Oracle OpenJDK version 18.0.1)
